@@ -1,0 +1,106 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Fundrik\Tests\Campaigns\Domain;
+
+use Fundrik\Campaigns\Domain\Campaign;
+use Fundrik\Campaigns\Domain\CampaignFactory;
+use InvalidArgumentException;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\TestCase;
+
+#[CoversClass( 'Fundrik\Campaigns\Domain\CampaignFactory' )]
+#[UsesClass( 'Fundrik\Campaigns\Domain\Campaign' )]
+#[UsesClass( 'Fundrik\Campaigns\Domain\CampaignId' )]
+#[UsesClass( 'Fundrik\Campaigns\Domain\CampaignTarget' )]
+class CampaignFactoryTest extends TestCase {
+
+	#[Test]
+	public function creates_campaign_with_int_id() {
+
+		$factory  = new CampaignFactory();
+		$campaign = $factory->create(
+			id: 1,
+			title: 'Test Campaign',
+			is_open: true,
+			has_target: true,
+			target_amount: 1000,
+			collected_amount: 200
+		);
+
+		$this->assertInstanceOf( Campaign::class, $campaign );
+		$this->assertEquals( 'Test Campaign', $campaign->title );
+		$this->assertEquals( '1000', (string) $campaign->target );
+	}
+
+	#[Test]
+	public function creates_campaign_with_uuid_id() {
+
+		$uuid = '0196934d-e117-71aa-ab63-cff172292bd2';
+
+		$factory  = new CampaignFactory();
+		$campaign = (new CampaignFactory())->create(
+			id: $uuid,
+			title: 'UUID Campaign',
+			is_open: false,
+			has_target: false,
+			target_amount: 0,
+			collected_amount: 0
+		);
+
+		$this->assertInstanceOf( Campaign::class, $campaign );
+		$this->assertEquals( $uuid, (string) $campaign->id );
+		$this->assertEquals( false, $campaign->is_open );
+	}
+
+	#[Test]
+	public function throws_when_target_amount_zero_but_target_enabled() {
+
+		$this->expectException( InvalidArgumentException::class );
+
+		$factory = new CampaignFactory();
+		$factory->create(
+			id: 1,
+			title: 'Invalid Campaign',
+			is_open: true,
+			has_target: true,
+			target_amount: 0,
+			collected_amount: 0
+		);
+	}
+
+	#[Test]
+	public function throws_when_target_amount_nonzero_but_target_disabled() {
+
+		$this->expectException( InvalidArgumentException::class );
+
+		$factory = new CampaignFactory();
+		$factory->create(
+			id: 1,
+			title: 'Invalid Campaign',
+			is_open: true,
+			has_target: false,
+			target_amount: 500,
+			collected_amount: 0
+		);
+	}
+
+	#[Test]
+	public function throws_when_id_is_negative() {
+
+		$this->expectException( InvalidArgumentException::class );
+
+		$factory = new CampaignFactory();
+		$factory->create(
+			id: -1,
+			title: 'Invalid Campaign',
+			is_open: true,
+			has_target: false,
+			target_amount: 0,
+			collected_amount: 0
+		);
+	}
+}

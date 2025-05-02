@@ -11,8 +11,6 @@ namespace Fundrik\Campaigns\Domain;
 
 use InvalidArgumentException;
 
-defined( 'ABSPATH' ) || die;
-
 /**
  * Represents the campaign's target status and amount.
  *
@@ -35,11 +33,11 @@ final readonly class CampaignTarget {
 		public int $amount,
 	) {
 
-		if ( $is_enabled && ! $amount ) {
-			throw new InvalidArgumentException( 'Target amount is required when targeting is enabled.' );
+		if ( $is_enabled && $amount <= 0 ) {
+			throw new InvalidArgumentException( 'Target amount must be positive when targeting is enabled.' );
 		}
 
-		if ( ! $is_enabled && $amount ) {
+		if ( ! $is_enabled && 0 !== $amount ) {
 			throw new InvalidArgumentException( 'Target amount should be zero when targeting is disabled.' );
 		}
 	}

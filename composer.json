@@ -1,14 +1,16 @@
 {
 	"autoload": {
 		"psr-4": {
-			"Fundrik\\": "src"
+			"Fundrik\\": "src",
+			"Fundrik\\Tests\\": "tests"
 		}
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
 		"wp-coding-standards/wpcs": "^3.1",
 		"phpcompatibility/php-compatibility": "^9.3",
-		"phpcompatibility/phpcompatibility-wp": "^2.1"
+		"phpcompatibility/phpcompatibility-wp": "^2.1",
+		"phpunit/phpunit": "^11.5"
 	},
 	"config": {
 		"allow-plugins": {

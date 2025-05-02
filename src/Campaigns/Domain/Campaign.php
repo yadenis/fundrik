@@ -9,12 +9,12 @@ declare(strict_types=1);
 
 namespace Fundrik\Campaigns\Domain;
 
-defined( 'ABSPATH' ) || die;
-
 /**
  * Represents a campaign.
  *
  * It is used for managing the campaign data.
+ *
+ * @codeCoverageIgnore
  */
 final readonly class Campaign {
 

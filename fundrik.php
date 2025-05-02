@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || die;
 
+define( 'FUNDRIK', true );
 define( 'FUNDRIK_URL', plugin_dir_url( __FILE__ ) );
 define( 'FUNDRIK_PATH', plugin_dir_path( __FILE__ ) );
 define( 'FUNDRIK_BASENAME', plugin_basename( __FILE__ ) );

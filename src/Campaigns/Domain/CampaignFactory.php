@@ -9,8 +9,6 @@ declare(strict_types=1);
 
 namespace Fundrik\Campaigns\Domain;
 
-defined( 'ABSPATH' ) || die;
-
 /**
  * Responsible for creating Campaign instances.
  *

@@ -12,8 +12,6 @@ namespace Fundrik\Campaigns\Domain;
 use InvalidArgumentException;
 use Ramsey\Uuid\Uuid;
 
-defined( 'ABSPATH' ) || die;
-
 /**
  * Represents the campaign's ID.
  *
@@ -49,7 +47,9 @@ final readonly class CampaignId {
 			return self::from_uuid( $id );
 		}
 
+		// @codeCoverageIgnoreStart
 		throw new InvalidArgumentException( 'ID must be int or UUID string' );
+		// @codeCoverageIgnoreEnd
 	}
 
 	/**
