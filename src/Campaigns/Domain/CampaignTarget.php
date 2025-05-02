@@ -1,0 +1,56 @@
+<?php
+/**
+ * CampaignTarget value object.
+ *
+ * @package Fundrik\Campaigns\Domain
+ */
+
+declare(strict_types=1);
+
+namespace Fundrik\Campaigns\Domain;
+
+use InvalidArgumentException;
+
+defined( 'ABSPATH' ) || die;
+
+/**
+ * Represents the campaign's target status and amount.
+ *
+ * This class ensures that the target amount is set only when targeting is enabled,
+ * and that it is zero when targeting is disabled.
+ */
+final readonly class CampaignTarget {
+
+	/**
+	 * CampaignTarget constructor.
+	 *
+	 * @param bool $is_enabled Flag indicating whether targeting is enabled.
+	 * @param int  $amount The target amount (if targeting is enabled).
+	 *
+	 * @throws InvalidArgumentException If target is enabled but amount is zero,
+	 *                                  or if target is disabled but amount is non-zero.
+	 */
+	public function __construct(
+		public bool $is_enabled,
+		public int $amount,
+	) {
+
+		if ( $is_enabled && ! $amount ) {
+			throw new InvalidArgumentException( 'Target amount is required when targeting is enabled.' );
+		}
+
+		if ( ! $is_enabled && $amount ) {
+			throw new InvalidArgumentException( 'Target amount should be zero when targeting is disabled.' );
+		}
+	}
+
+	/**
+	 * Convert CampaignTarget to a string (target amount).
+	 *
+	 * @return string The target amount.
+	 */
+	public function __toString(): string {
+
+		return (string) $this->amount;
+	}
+}

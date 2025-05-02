@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Fundrik" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<arg value="sp"/>
+	<arg name="basepath" value="."/>
+	<arg name="colors"/>
+	<arg name="extensions" value="php"/>
+	<arg name="parallel" value="8"/>
+
+	<config name="testVersion" value="8.2-"/>
+	<config name="minimum_supported_wp_version" value="6.8"/>
+
+	<rule ref="PHPCompatibilityWP"/>
+
+	<rule ref="WordPress">
+		<!-- PSR4 autoload -->
+	    <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<!-- For Windows end of line -->
+		<exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
+		<!-- Allow short array syntax -->
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
+		<!-- Allow short ternary operator -->
+		<exclude name="Universal.Operators.DisallowShortTernary.Found"/>
+	</rule>
+	
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="fundrik"/>
+			</property>
+		</properties>
+	</rule>
+</ruleset>
