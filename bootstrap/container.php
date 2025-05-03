@@ -9,8 +9,8 @@
 
 declare(strict_types=1);
 
-use Fundrik\Infrastructure\PlatformInterface;
-use Fundrik\Infrastructure\WordpressPlatform;
+use Fundrik\Infrastructure\Platforms\PlatformInterface;
+use Fundrik\Infrastructure\Platforms\WordpressPlatform;
 
 $fundrik_container = fundrik();
 

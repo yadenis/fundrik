@@ -12,7 +12,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Infrastructure;
+namespace Fundrik\Infrastructure\Platforms;
 
 interface PlatformInterface {
 

@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Infrastructure;
+namespace Fundrik\Infrastructure\Platforms;
 
 /**
  * WordPress-specific implementation of platform abstraction.

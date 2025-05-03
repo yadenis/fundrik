@@ -10,7 +10,7 @@
 declare(strict_types=1);
 
 use Fundrik\Infrastructure\Container;
-use Fundrik\Infrastructure\PlatformInterface;
+use Fundrik\Infrastructure\Platforms\PlatformInterface;
 
 /**
  * Retrieves the Fundrik container instance.
