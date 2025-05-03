@@ -3,6 +3,8 @@
  * Factory class for creating Campaign instances.
  *
  * @package Fundrik\Campaigns\Domain
+ *
+ * @since 1.0.0
  */
 
 declare(strict_types=1);
@@ -13,11 +15,15 @@ namespace Fundrik\Campaigns\Domain;
  * Responsible for creating Campaign instances.
  *
  * It validates input data and ensures that the Campaign is correctly initialized.
+ *
+ * @since 1.0.0
  */
 final readonly class CampaignFactory {
 
 	/**
 	 * Create a new Campaign instance.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int|string $id Campaign ID, can be either an integer or a UUID string.
 	 * @param string     $title Campaign title.

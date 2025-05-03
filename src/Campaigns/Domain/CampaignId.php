@@ -3,6 +3,8 @@
  * CampaignId value object.
  *
  * @package Fundrik\Campaigns\Domain
+ *
+ * @since 1.0.0
  */
 
 declare(strict_types=1);
@@ -16,11 +18,15 @@ use Ramsey\Uuid\Uuid;
  * Represents the campaign's ID.
  *
  * It can either be an positive integer or a valid UUID string.
+ *
+ * @since 1.0.0
  */
 final readonly class CampaignId {
 
 	/**
 	 * CampaignId constructor.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int|string $value Campaign ID (either an integer or UUID string).
 	 */
@@ -30,6 +36,8 @@ final readonly class CampaignId {
 
 	/**
 	 * Factory method to create a CampaignId instance from either int or string.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param int|string $id The ID (either integer or UUID string).
 	 *
@@ -55,6 +63,8 @@ final readonly class CampaignId {
 	/**
 	 * Factory method to create a CampaignId instance from an integer.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param int $id The integer ID.
 	 *
 	 * @return self New instance of CampaignId.
@@ -73,6 +83,8 @@ final readonly class CampaignId {
 	/**
 	 * Factory method to create a CampaignId instance from a UUID string.
 	 *
+	 * @since 1.0.0
+	 *
 	 * @param string $uuid The UUID string.
 	 *
 	 * @return self New instance of CampaignId.
@@ -90,6 +102,8 @@ final readonly class CampaignId {
 
 	/**
 	 * Convert CampaignId to a string.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return string The campaign ID.
 	 */

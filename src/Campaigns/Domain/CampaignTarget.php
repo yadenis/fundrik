@@ -3,6 +3,8 @@
  * CampaignTarget value object.
  *
  * @package Fundrik\Campaigns\Domain
+ *
+ * @since 1.0.0
  */
 
 declare(strict_types=1);
@@ -16,11 +18,15 @@ use InvalidArgumentException;
  *
  * This class ensures that the target amount is set only when targeting is enabled,
  * and that it is zero when targeting is disabled.
+ *
+ * @since 1.0.0
  */
 final readonly class CampaignTarget {
 
 	/**
 	 * CampaignTarget constructor.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param bool $is_enabled Flag indicating whether targeting is enabled.
 	 * @param int  $amount The target amount (if targeting is enabled).
@@ -44,6 +50,8 @@ final readonly class CampaignTarget {
 
 	/**
 	 * Convert CampaignTarget to a string (target amount).
+	 *
+	 * @since 1.0.0
 	 *
 	 * @return string The target amount.
 	 */

@@ -3,6 +3,8 @@
  * CampaignId class.
  *
  * @package Fundrik\Campaigns\Domain
+ *
+ * @since 1.0.0
  */
 
 declare(strict_types=1);
@@ -14,12 +16,16 @@ namespace Fundrik\Campaigns\Domain;
  *
  * It is used for managing the campaign data.
  *
+ * @since 1.0.0
+ *
  * @codeCoverageIgnore
  */
 final readonly class Campaign {
 
 	/**
 	 * Campaign constructor.
+	 *
+	 * @since 1.0.0
 	 *
 	 * @param CampaignId     $id Campaign ID (can be either int or UUID).
 	 * @param string         $title Campaign title.
