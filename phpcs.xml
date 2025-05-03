@@ -33,4 +33,12 @@
 			</property>
 		</properties>
 	</rule>
+
+	<rule ref="WordPress.Security.EscapeOutput">
+		<properties>
+			<property name="customEscapingFunctions" type="array">
+				<element value="fundrik_escape_html" />
+			</property>
+		</properties>
+	</rule>
 </ruleset>
