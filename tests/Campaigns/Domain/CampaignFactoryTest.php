@@ -21,8 +21,7 @@ class CampaignFactoryTest extends TestCase {
 	#[Test]
 	public function creates_campaign_with_int_id() {
 
-		$factory  = new CampaignFactory();
-		$campaign = $factory->create(
+		$campaign = (new CampaignFactory())->create(
 			id: 1,
 			title: 'Test Campaign',
 			is_open: true,
@@ -41,7 +40,6 @@ class CampaignFactoryTest extends TestCase {
 
 		$uuid = '0196934d-e117-71aa-ab63-cff172292bd2';
 
-		$factory  = new CampaignFactory();
 		$campaign = (new CampaignFactory())->create(
 			id: $uuid,
 			title: 'UUID Campaign',
@@ -61,8 +59,7 @@ class CampaignFactoryTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		$factory = new CampaignFactory();
-		$factory->create(
+		(new CampaignFactory())->create(
 			id: 1,
 			title: 'Invalid Campaign',
 			is_open: true,
@@ -77,8 +74,7 @@ class CampaignFactoryTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		$factory = new CampaignFactory();
-		$factory->create(
+		(new CampaignFactory())->create(
 			id: 1,
 			title: 'Invalid Campaign',
 			is_open: true,
@@ -93,8 +89,7 @@ class CampaignFactoryTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		$factory = new CampaignFactory();
-		$factory->create(
+		(new CampaignFactory())->create(
 			id: -1,
 			title: 'Invalid Campaign',
 			is_open: true,
