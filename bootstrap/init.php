@@ -9,8 +9,9 @@
 
 declare(strict_types=1);
 
-require_once __DIR__ . '/../vendor/autoload.php';
+use Fundrik\Infrastructure\Platforms\PlatformInterface;
+use Fundrik\Infrastructure\Platforms\WordpressPlatform;
 
-require_once __DIR__ . '/paths.php';
-require_once __DIR__ . '/helpers.php';
-require_once __DIR__ . '/container.php';
+$fundrik_container = fundrik();
+
+$fundrik_container->singleton( PlatformInterface::class, WordpressPlatform::class );

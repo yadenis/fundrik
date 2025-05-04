@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || die;
  */
 function fundrik_init(): void {
 
-	require_once __DIR__ . '/bootstrap/init.php';
+	require_once __DIR__ . '/vendor/autoload.php';
 }
 
 add_action( 'plugins_loaded', fundrik_init( ... ) );

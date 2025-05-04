@@ -3,7 +3,11 @@
 		"psr-4": {
 			"Fundrik\\": "src",
 			"Fundrik\\Tests\\": "tests"
-		}
+		},
+		"files": [
+			"src/Support/helpers.php",
+			"bootstrap/init.php"
+		]
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
