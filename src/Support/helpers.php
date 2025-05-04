@@ -9,14 +9,15 @@
 
 declare(strict_types=1);
 
-use Fundrik\Infrastructure\Container;
+use Fundrik\Infrastructure\Internal\Container;
+use Fundrik\Infrastructure\Internal\ContainerManager;
 use Fundrik\Infrastructure\Platforms\PlatformInterface;
 
 /**
  * Retrieves the Fundrik container instance.
  *
- * This function ensures that only one instance of the container is created
- * and reused throughout the plugin.
+ * This function provides access to the Fundrik dependency injection container.
+ * The container is managed internally and reused across the plugin lifecycle.
  *
  * @since 1.0.0
  *
@@ -24,13 +25,7 @@ use Fundrik\Infrastructure\Platforms\PlatformInterface;
  */
 function fundrik(): Container {
 
-	static $container = null;
-
-	if ( null === $container ) {
-		$container = new Container();
-	}
-
-	return $container;
+	return ContainerManager::get();
 }
 
 /**

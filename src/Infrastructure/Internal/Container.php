@@ -5,11 +5,13 @@
  * @package Fundrik\Infrastructure
  *
  * @since 1.0.0
+ *
+ * @internal
  */
 
 declare(strict_types=1);
 
-namespace Fundrik\Infrastructure;
+namespace Fundrik\Infrastructure\Internal;
 
 use Illuminate\Container\Container as IlluminateContainer;
 
@@ -19,6 +21,8 @@ use Illuminate\Container\Container as IlluminateContainer;
  * Extends Laravel Service Container to provide dependency injection functionality.
  *
  * @since 1.0.0
+ *
+ * @internal
  */
 final class Container extends IlluminateContainer {
 
