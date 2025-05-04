@@ -14,6 +14,7 @@ if ( ! function_exists( 'esc_html' ) ) {
 	 *
 	 * @return string Escaped text.
 	 */
+	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedFunctionFound
 	function esc_html( string $text ): string {
 
 		return "The funny white rabbit escaped this string and here is: {$text}";
