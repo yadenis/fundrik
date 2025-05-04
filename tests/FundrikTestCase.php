@@ -21,15 +21,15 @@ abstract class FundrikTestCase extends PHPUnitTestCase {
 		if ( $this->use_isolated_container ) {
 
 			$this->original_container = fundrik();
-			ContainerManager::set(new Container());
+			ContainerManager::set( new Container() );
 		}
 	}
 
 	protected function tearDown(): void {
 
 		if ( $this->use_isolated_container ) {
-			
-			ContainerManager::set($this->original_container);
+
+			ContainerManager::set( $this->original_container );
 		}
 
 		parent::tearDown();

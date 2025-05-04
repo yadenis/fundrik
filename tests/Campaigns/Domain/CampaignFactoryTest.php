@@ -21,7 +21,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 	#[Test]
 	public function creates_campaign_with_int_id() {
 
-		$campaign = (new CampaignFactory())->create(
+		$campaign = ( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Test Campaign',
 			is_open: true,
@@ -40,7 +40,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 
 		$uuid = '0196934d-e117-71aa-ab63-cff172292bd2';
 
-		$campaign = (new CampaignFactory())->create(
+		$campaign = ( new CampaignFactory() )->create(
 			id: $uuid,
 			title: 'UUID Campaign',
 			is_open: false,
@@ -59,7 +59,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		(new CampaignFactory())->create(
+		( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Invalid Campaign',
 			is_open: true,
@@ -74,7 +74,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		(new CampaignFactory())->create(
+		( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Invalid Campaign',
 			is_open: true,
@@ -89,7 +89,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		(new CampaignFactory())->create(
+		( new CampaignFactory() )->create(
 			id: -1,
 			title: 'Invalid Campaign',
 			is_open: true,
