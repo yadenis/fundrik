@@ -2,14 +2,14 @@
 /**
  * CampaignId class.
  *
- * @package Fundrik\Campaigns\Domain
+ * @package Fundrik\Domain\Campaigns
  *
  * @since 1.0.0
  */
 
 declare(strict_types=1);
 
-namespace Fundrik\Campaigns\Domain;
+namespace Fundrik\Domain\Campaigns;
 
 /**
  * Represents a campaign.

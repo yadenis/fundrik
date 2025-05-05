@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Campaigns\Domain;
+namespace Fundrik\Tests\Domain\Campaigns;
 
 use Fundrik\Infrastructure\Platforms\WordpressPlatform;
 use Fundrik\Tests\FundrikTestCase;

@@ -2,20 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Campaigns\Domain;
+namespace Fundrik\Tests\Domain\Campaigns;
 
-use Fundrik\Campaigns\Domain\Campaign;
-use Fundrik\Campaigns\Domain\CampaignFactory;
+use Fundrik\Domain\Campaigns\Campaign;
+use Fundrik\Domain\Campaigns\CampaignFactory;
 use Fundrik\Tests\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 
-#[CoversClass( 'Fundrik\Campaigns\Domain\CampaignFactory' )]
-#[UsesClass( 'Fundrik\Campaigns\Domain\Campaign' )]
-#[UsesClass( 'Fundrik\Campaigns\Domain\CampaignId' )]
-#[UsesClass( 'Fundrik\Campaigns\Domain\CampaignTarget' )]
+#[CoversClass( 'Fundrik\Domain\Campaigns\CampaignFactory' )]
+#[UsesClass( 'Fundrik\Domain\Campaigns\Campaign' )]
+#[UsesClass( 'Fundrik\Domain\Campaigns\CampaignId' )]
+#[UsesClass( 'Fundrik\Domain\Campaigns\CampaignTarget' )]
 class CampaignFactoryTest extends FundrikTestCase {
 
 	#[Test]
