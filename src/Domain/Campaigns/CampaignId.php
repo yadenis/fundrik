@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Fundrik\Domain\Campaigns;
 
 use InvalidArgumentException;
+use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
 
 /**
@@ -56,7 +57,7 @@ final readonly class CampaignId {
 		}
 
 		// @codeCoverageIgnoreStart
-		throw new InvalidArgumentException( 'ID must be int or UUID string' );
+		throw new InvalidArgumentException( 'CampaignId must be int or UUID string' );
 		// @codeCoverageIgnoreEnd
 	}
 
@@ -74,7 +75,7 @@ final readonly class CampaignId {
 	public static function from_int( int $id ): self {
 
 		if ( $id <= 0 ) {
-			throw new InvalidArgumentException( 'ID must be a positive integer' );
+			throw new InvalidArgumentException( 'CampaignId must be a positive integer' );
 		}
 
 		return new self( $id );
@@ -93,11 +94,14 @@ final readonly class CampaignId {
 	 */
 	public static function from_uuid( string $uuid ): self {
 
-		if ( ! Uuid::isValid( $uuid ) ) {
-			throw new InvalidArgumentException( 'ID must be a valid UUID string' );
+		try {
+			return new self( (string) Uuid::fromString( $uuid ) );
+		} catch ( InvalidUuidStringException $e ) {
+			throw new InvalidArgumentException(
+				message: 'CampaignId must be a valid UUID string.',
+				previous: $e
+			);
 		}
-
-		return new self( $uuid );
 	}
 
 	/**

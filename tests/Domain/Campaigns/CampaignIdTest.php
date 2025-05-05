@@ -53,4 +53,13 @@ class CampaignIdTest extends FundrikTestCase {
 
 		CampaignId::create( 'invalid-uuid' );
 	}
+
+	#[Test]
+	public function checks_uuid_case_normalization() {
+
+		$uuid = '0196A27F-1441-7692-AAEF-92889618FC12';
+		$id   = CampaignId::create( $uuid );
+
+		$this->assertEquals( '0196a27f-1441-7692-aaef-92889618fc12', (string) $id );
+	}
 }
