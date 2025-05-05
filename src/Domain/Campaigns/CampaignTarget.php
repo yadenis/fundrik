@@ -2,8 +2,6 @@
 /**
  * CampaignTarget value object.
  *
- * @package Fundrik\Domain\Campaigns
- *
  * @since 1.0.0
  */
 

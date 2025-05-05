@@ -2,7 +2,6 @@
 /**
  * Fundrik
  *
- * @package Fundrik
  * @author Denis Yanchevskiy
  * @copyright 2025
  * @license GPLv2+

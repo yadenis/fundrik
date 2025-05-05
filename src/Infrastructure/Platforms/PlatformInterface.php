@@ -5,8 +5,6 @@
  * Defines a contract for platform-specific functionality that can be
  * implemented for WordPress or other environments to keep core logic decoupled.
  *
- * @package Fundrik\Infrastructure
- *
  * @since 1.0.0
  */
 

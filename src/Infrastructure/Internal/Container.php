@@ -2,8 +2,6 @@
 /**
  * Dependency Injection Container for Fundrik.
  *
- * @package Fundrik\Infrastructure
- *
  * @since 1.0.0
  *
  * @internal

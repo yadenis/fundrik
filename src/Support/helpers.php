@@ -2,8 +2,6 @@
 /**
  * Helper functions for Fundrik plugin.
  *
- * @package Fundrik\Bootstrap
- *
  * @since 1.0.0
  */
 

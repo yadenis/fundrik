@@ -2,8 +2,6 @@
 /**
  * Factory class for creating Campaign instances.
  *
- * @package Fundrik\Domain\Campaigns
- *
  * @since 1.0.0
  */
 

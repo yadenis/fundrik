@@ -2,8 +2,6 @@
 /**
  * ContainerManager class for managing Fundrik's DI container.
  *
- * @package Fundrik\Infrastructure\Internal
- *
  * @since 1.0.0
  *
  * @internal

@@ -17,12 +17,14 @@
 		<!-- PSR4 autoload -->
 	    <exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
-		<!-- For Windows end of line -->
+		<!-- Allow Windows end of line -->
 		<exclude name="Generic.Files.LineEndings.InvalidEOLChar"/>
 		<!-- Allow short array syntax -->
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 		<!-- Allow short ternary operator -->
 		<exclude name="Universal.Operators.DisallowShortTernary.Found"/>
+		<!-- Disable check for missing @package tag -->
+		<exclude name="Squiz.Commenting.FileComment.MissingPackageTag"/>
 		<!-- @see https://github.com/WordPress/wordpress-develop/pull/5136 -->
 		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
 	</rule>

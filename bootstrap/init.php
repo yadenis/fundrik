@@ -2,8 +2,6 @@
 /**
  * Initializes the Fundrik plugin environment.
  *
- * @package Fundrik\Bootstrap
- *
  * @since 1.0.0
  */
 
