@@ -23,6 +23,8 @@
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found"/>
 		<!-- Allow short ternary operator -->
 		<exclude name="Universal.Operators.DisallowShortTernary.Found"/>
+		<!-- @see https://github.com/WordPress/wordpress-develop/pull/5136 -->
+		<exclude name="WordPress.Security.EscapeOutput.ExceptionNotEscaped"/>
 	</rule>
 	
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
