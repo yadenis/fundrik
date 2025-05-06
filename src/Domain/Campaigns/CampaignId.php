@@ -73,7 +73,7 @@ final readonly class CampaignId {
 	public static function from_int( int $id ): self {
 
 		if ( $id <= 0 ) {
-			throw new InvalidArgumentException( 'CampaignId must be a positive integer' );
+			throw new InvalidArgumentException( "CampaignId must be a positive, given: {$id}" );
 		}
 
 		return new self( $id );
@@ -96,7 +96,7 @@ final readonly class CampaignId {
 			return new self( (string) Uuid::fromString( $uuid ) );
 		} catch ( InvalidUuidStringException $e ) {
 			throw new InvalidArgumentException(
-				message: 'CampaignId must be a valid UUID string.',
+				message: "CampaignId must be a valid UUID, given: {$uuid}",
 				previous: $e
 			);
 		}
