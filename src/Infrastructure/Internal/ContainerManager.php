@@ -14,8 +14,7 @@ namespace Fundrik\Infrastructure\Internal;
 /**
  * Manages a singleton instance of the Fundrik container.
  *
- * Used internally to provide global access to the container,
- * especially in non-OO contexts like helper functions.
+ * Provides internal access to the DI container.
  *
  * @since 1.0.0
  *

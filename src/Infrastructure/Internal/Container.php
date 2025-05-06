@@ -16,7 +16,8 @@ use Illuminate\Container\Container as IlluminateContainer;
 /**
  * Fundrik Dependency Injection Container.
  *
- * Extends Laravel Service Container to provide dependency injection functionality.
+ * Extends Laravel Service Container to provide dependency injection functionality
+ * inside the Fundrik plugin. Used internally and should not be relied upon externally.
  *
  * @since 1.0.0
  *
