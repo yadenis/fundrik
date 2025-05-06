@@ -42,13 +42,20 @@ class WpdbQueryExecutorTest extends FundrikTestCase {
 		$mock_db
 			->expects( $this->once() )
 			->method( 'prepare' )
-			->with( "SELECT * FROM %i WHERE id = {$placeholder} LIMIT 1", self::TABLE, $id )
+			->with(
+				$this->identicalTo( "SELECT * FROM %i WHERE id = {$placeholder} LIMIT 1" ),
+				$this->identicalTo( self::TABLE ),
+				$this->identicalTo( $id )
+			)
 			->willReturn( 'prepared-sql' );
 
 		$mock_db
 			->expects( $this->once() )
 			->method( 'get_row' )
-			->with( 'prepared-sql', ARRAY_A )
+			->with(
+				$this->identicalTo( 'prepared-sql' ),
+				$this->identicalTo( ARRAY_A )
+			)
 			->willReturn(
 				[
 					'id'    => $id,
@@ -77,13 +84,20 @@ class WpdbQueryExecutorTest extends FundrikTestCase {
 		$mock_db
 			->expects( $this->once() )
 			->method( 'prepare' )
-			->with( 'SELECT * FROM %i WHERE id = %d LIMIT 1', self::TABLE, 999 )
+			->with(
+				$this->identicalTo( 'SELECT * FROM %i WHERE id = %d LIMIT 1' ),
+				$this->identicalTo( self::TABLE ),
+				$this->identicalTo( 999 )
+			)
 			->willReturn( 'prepared-sql' );
 
 		$mock_db
 			->expects( $this->once() )
 			->method( 'get_row' )
-			->with( 'prepared-sql', ARRAY_A )
+			->with(
+				$this->identicalTo( 'prepared-sql' ),
+				$this->identicalTo( ARRAY_A )
+			)
 			->willReturn( null );
 
 		$executor = new WpdbQueryExecutor( $mock_db );
@@ -100,13 +114,19 @@ class WpdbQueryExecutorTest extends FundrikTestCase {
 		$mock_db
 			->expects( $this->once() )
 			->method( 'prepare' )
-			->with( 'SELECT * FROM %i', self::TABLE )
+			->with(
+				$this->identicalTo( 'SELECT * FROM %i' ),
+				$this->identicalTo( self::TABLE )
+			)
 			->willReturn( 'prepared-sql' );
 
 		$mock_db
 			->expects( $this->once() )
 			->method( 'get_results' )
-			->with( 'prepared-sql', ARRAY_A )
+			->with(
+				$this->identicalTo( 'prepared-sql' ),
+				$this->identicalTo( ARRAY_A )
+			)
 			->willReturn(
 				[
 					[

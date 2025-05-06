@@ -18,7 +18,7 @@ class CampaignIdTest extends FundrikTestCase {
 
 		$id = CampaignId::create( 123 );
 
-		$this->assertEquals( '123', (string) $id );
+		$this->assertSame( '123', (string) $id );
 	}
 
 	#[Test]
@@ -43,7 +43,7 @@ class CampaignIdTest extends FundrikTestCase {
 		$uuid = '0196930b-f2ef-7ec8-b685-cffc19cbf0e3';
 		$id   = CampaignId::create( $uuid );
 
-		$this->assertEquals( $uuid, (string) $id );
+		$this->assertSame( $uuid, (string) $id );
 	}
 
 	#[Test]
@@ -60,6 +60,6 @@ class CampaignIdTest extends FundrikTestCase {
 		$uuid = '0196A27F-1441-7692-AAEF-92889618FC12';
 		$id   = CampaignId::create( $uuid );
 
-		$this->assertEquals( '0196a27f-1441-7692-aaef-92889618fc12', (string) $id );
+		$this->assertSame( '0196a27f-1441-7692-aaef-92889618fc12', (string) $id );
 	}
 }

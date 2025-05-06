@@ -18,7 +18,7 @@ class CampaignTargetTest extends FundrikTestCase {
 
 		$target = new CampaignTarget( true, 1000 );
 
-		$this->assertEquals( '1000', (string) $target );
+		$this->assertSame( '1000', (string) $target );
 	}
 
 	#[Test]
@@ -42,7 +42,7 @@ class CampaignTargetTest extends FundrikTestCase {
 
 		$target = new CampaignTarget( false, 0 );
 
-		$this->assertEquals( '0', (string) $target );
+		$this->assertSame( '0', (string) $target );
 	}
 
 	#[Test]
