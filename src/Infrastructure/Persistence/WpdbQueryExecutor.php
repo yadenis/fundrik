@@ -2,7 +2,7 @@
 /**
  * WpdbQueryExecutor class.
  *
- * A wrapper around wpdb for safe and reusable SQL query execution.
+ * A wrapper around wpdb.
  *
  * @since 1.0.0
  */
@@ -21,7 +21,7 @@ use wpdb;
 final readonly class WpdbQueryExecutor {
 
 	/**
-	 * Constructor.
+	 * WpdbQueryExecutor constructor.
 	 *
 	 * @since 1.0.0
 	 *

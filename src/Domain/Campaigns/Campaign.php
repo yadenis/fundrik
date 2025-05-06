@@ -1,6 +1,6 @@
 <?php
 /**
- * CampaignId class.
+ * Campaign class.
  *
  * @since 1.0.0
  */
