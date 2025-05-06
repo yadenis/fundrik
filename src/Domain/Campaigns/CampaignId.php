@@ -30,7 +30,7 @@ final readonly class CampaignId {
 	 * @param int|string $value Campaign ID (either an integer or UUID string).
 	 */
 	private function __construct(
-		private int|string $value
+		public int|string $value
 	) {}
 
 	/**
