@@ -55,4 +55,25 @@ final readonly class CampaignFactory {
 
 		return $campaign;
 	}
+
+	/**
+	 * Create a Campaign instance from a CampaignDto.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param CampaignDto $dto The data transfer object containing campaign data.
+	 *
+	 * @return Campaign A new Campaign instance constructed from the DTO.
+	 */
+	public function from_dto( CampaignDto $dto ): Campaign {
+
+		return $this->create(
+			id: $dto->id,
+			title: $dto->title,
+			is_open: $dto->is_open,
+			has_target: $dto->has_target,
+			target_amount: $dto->target_amount,
+			collected_amount: $dto->collected_amount
+		);
+	}
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fundrik\Tests\Domain\Campaigns;
 
 use Fundrik\Domain\Campaigns\Campaign;
+use Fundrik\Domain\Campaigns\CampaignDto;
 use Fundrik\Domain\Campaigns\CampaignFactory;
 use Fundrik\Domain\Campaigns\CampaignId;
 use Fundrik\Domain\Campaigns\CampaignTarget;
@@ -99,5 +100,25 @@ class CampaignFactoryTest extends FundrikTestCase {
 			target_amount: 0,
 			collected_amount: 0
 		);
+	}
+
+	#[Test]
+	public function creates_campaign_from_dto() {
+
+		$dto = new CampaignDto(
+			id: 42,
+			title: 'DTO Campaign',
+			is_open: true,
+			has_target: true,
+			target_amount: 1000,
+			collected_amount: 400
+		);
+
+		$campaign = ( new CampaignFactory() )->from_dto( $dto );
+
+		$this->assertInstanceOf( Campaign::class, $campaign );
+		$this->assertEquals( 'DTO Campaign', $campaign->title );
+		$this->assertEquals( '1000', (string) $campaign->target );
+		$this->assertEquals( 400, $campaign->collected_amount );
 	}
 }
