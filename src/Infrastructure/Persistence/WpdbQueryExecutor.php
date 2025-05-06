@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Fundrik\Infrastructure\Persistence;
 
+use Fundrik\Domain\Campaigns\Interfaces\QueryExecutorInterface;
 use wpdb;
 
 /**
@@ -18,7 +19,7 @@ use wpdb;
  *
  * @since 1.0.0
  */
-final readonly class WpdbQueryExecutor {
+final readonly class WpdbQueryExecutor implements QueryExecutorInterface {
 
 	/**
 	 * WpdbQueryExecutor constructor.
