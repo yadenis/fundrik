@@ -10,7 +10,7 @@ use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 
-#[CoversClass( 'Fundrik\Domain\Campaigns\CampaignTarget' )]
+#[CoversClass( CampaignTarget::class )]
 class CampaignTargetTest extends FundrikTestCase {
 
 	#[Test]

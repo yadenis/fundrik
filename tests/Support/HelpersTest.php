@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Fundrik\Tests\Support;
 
 use Fundrik\Infrastructure\Internal\Container;
+use Fundrik\Infrastructure\Internal\ContainerManager;
 use Fundrik\Infrastructure\Platforms\PlatformInterface;
 use Fundrik\Tests\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversFunction;
@@ -13,7 +14,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 
 #[CoversFunction( 'fundrik' )]
 #[CoversFunction( 'fundrik_escape_html' )]
-#[UsesClass( 'Fundrik\Infrastructure\Internal\ContainerManager' )]
+#[UsesClass( ContainerManager::class )]
 final class HelpersTest extends FundrikTestCase {
 
 	protected bool $use_isolated_container = true;

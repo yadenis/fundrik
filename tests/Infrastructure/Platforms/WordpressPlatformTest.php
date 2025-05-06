@@ -9,7 +9,7 @@ use Fundrik\Tests\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 
-#[CoversClass( 'Fundrik\Infrastructure\Platforms\WordpressPlatform' )]
+#[CoversClass( WordpressPlatform::class )]
 class WordpressPlatformTest extends FundrikTestCase {
 
 	#[Test]
