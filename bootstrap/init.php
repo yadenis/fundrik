@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-use Fundrik\Domain\Campaigns\QueryExecutorInterface;
+use Fundrik\Domain\Campaigns\Interfaces\QueryExecutorInterface;
 use Fundrik\Infrastructure\Persistence\WpdbQueryExecutor;
 use Fundrik\Infrastructure\Platforms\PlatformInterface;
 use Fundrik\Infrastructure\Platforms\WordpressPlatform;
