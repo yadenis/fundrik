@@ -47,6 +47,7 @@ class CampaignServiceTest extends FundrikTestCase {
 		$dto = new CampaignDto(
 			id               : 123,
 			title            : 'Array Campaign',
+			slug             : 'array-campaign',
 			is_open          : true,
 			has_target       : true,
 			target_amount    : 1500,
@@ -86,6 +87,7 @@ class CampaignServiceTest extends FundrikTestCase {
 		$dto1 = new CampaignDto(
 			id               : 123,
 			title            : 'Campaign One',
+			slug             : 'campaign-one',
 			is_open          : true,
 			has_target       : true,
 			target_amount    : 1500,
@@ -95,6 +97,7 @@ class CampaignServiceTest extends FundrikTestCase {
 		$dto2 = new CampaignDto(
 			id               : 124,
 			title            : 'Campaign Two',
+			slug             : 'campaign-two',
 			is_open          : true,
 			has_target       : true,
 			target_amount    : 1500,

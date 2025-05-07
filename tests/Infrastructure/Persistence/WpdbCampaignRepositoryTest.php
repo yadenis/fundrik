@@ -46,6 +46,7 @@ class WpdbCampaignRepositoryTest extends FundrikTestCase {
 		$db_data = [
 			'id'               => $id,
 			'title'            => 'Test Campaign',
+			'slug'             => 'test-campaign',
 			'is_open'          => true,
 			'has_target'       => true,
 			'target_amount'    => 1000,
@@ -66,6 +67,7 @@ class WpdbCampaignRepositoryTest extends FundrikTestCase {
 		$this->assertInstanceOf( CampaignDto::class, $result );
 		$this->assertSame( $id, $result->id );
 		$this->assertSame( 'Test Campaign', $result->title );
+		$this->assertSame( 'test-campaign', $result->slug );
 		$this->assertSame( true, $result->is_open );
 		$this->assertSame( true, $result->has_target );
 		$this->assertSame( 1000, $result->target_amount );
@@ -100,6 +102,7 @@ class WpdbCampaignRepositoryTest extends FundrikTestCase {
 			[
 				'id'               => 123,
 				'title'            => 'Campaign 1',
+				'slug'             => 'campaign-1',
 				'is_open'          => true,
 				'has_target'       => true,
 				'target_amount'    => 1000,
@@ -108,6 +111,7 @@ class WpdbCampaignRepositoryTest extends FundrikTestCase {
 			[
 				'id'               => 124,
 				'title'            => 'Campaign 2',
+				'slug'             => 'campaign-1',
 				'is_open'          => false,
 				'has_target'       => false,
 				'target_amount'    => 0,

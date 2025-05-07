@@ -33,6 +33,7 @@ final readonly class CampaignDtoFactory {
 	 * @param array $data Associative array with keys:
 	 *                    - id               (int|string)
 	 *                    - title            (string)
+	 *                    - slug             (string)
 	 *                    - is_open          (bool)
 	 *                    - has_target       (bool)
 	 *                    - target_amount    (int)
@@ -45,6 +46,7 @@ final readonly class CampaignDtoFactory {
 		return new CampaignDto(
 			id: $data['id'],
 			title: $data['title'],
+			slug: $data['slug'],
 			is_open: $data['is_open'],
 			has_target: $data['has_target'],
 			target_amount: $data['target_amount'],

@@ -27,6 +27,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 		$campaign = ( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Test Campaign',
+			slug: 'test-campaign',
 			is_open: true,
 			has_target: true,
 			target_amount: 1000,
@@ -46,6 +47,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 		$campaign = ( new CampaignFactory() )->create(
 			id: $uuid,
 			title: 'UUID Campaign',
+			slug: 'uuid-campaign',
 			is_open: false,
 			has_target: false,
 			target_amount: 0,
@@ -65,6 +67,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 		( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Invalid Campaign',
+			slug: 'invalid-campaign',
 			is_open: true,
 			has_target: true,
 			target_amount: 0,
@@ -80,6 +83,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 		( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Invalid Campaign',
+			slug: 'invalid-campaign',
 			is_open: true,
 			has_target: false,
 			target_amount: 500,
@@ -95,6 +99,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 		( new CampaignFactory() )->create(
 			id: -1,
 			title: 'Invalid Campaign',
+			slug: 'invalid-campaign',
 			is_open: true,
 			has_target: false,
 			target_amount: 0,
@@ -108,6 +113,7 @@ class CampaignFactoryTest extends FundrikTestCase {
 		$dto = new CampaignDto(
 			id: 42,
 			title: 'DTO Campaign',
+			slug: 'dto-campaign',
 			is_open: true,
 			has_target: true,
 			target_amount: 1000,

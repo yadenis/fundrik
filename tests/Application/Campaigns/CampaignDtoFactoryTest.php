@@ -19,6 +19,7 @@ class CampaignDtoFactoryTest extends FundrikTestCase {
 		$data = [
 			'id'               => 123,
 			'title'            => 'Array Campaign',
+			'slug'             => 'array-campaign',
 			'is_open'          => true,
 			'has_target'       => true,
 			'target_amount'    => 1500,
@@ -30,6 +31,7 @@ class CampaignDtoFactoryTest extends FundrikTestCase {
 		$this->assertInstanceOf( CampaignDto::class, $dto );
 		$this->assertSame( 123, $dto->id );
 		$this->assertSame( 'Array Campaign', $dto->title );
+		$this->assertSame( 'array-campaign', $dto->slug );
 		$this->assertTrue( $dto->is_open );
 		$this->assertTrue( $dto->has_target );
 		$this->assertSame( 1500, $dto->target_amount );
