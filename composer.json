@@ -1,18 +1,27 @@
 {
 	"name": "fundrik/core",
-	"description": "Fundraising solution core library",
+	"description": "Core library for the Fundrik fundraising solution",
+	"keywords": [
+		"crowdfunding",
+		"fundraising",
+		"donations"
+	],
+	"homepage": "https://fundrik.ru",
+	"type": "library",
+	"license": "GPL-3.0-or-later",
 	"authors": [
 		{
 			"name": "Denis Yanchevskiy",
 			"email": "denis@denisco.pro"
 		}
 	],
-	"type": "library",
-	"homepage": "https://fundrik.ru",
-	"license": "GPL-3.0-or-later",
-	"minimum-stability": "dev",
-	"prefer-stable": true,
+	"support": {
+		"email": "denis@denisco.pro",
+		"issues": "https://github.com/Fundrik/core/issues",
+		"source": "https://github.com/Fundrik/core"
+	},
 	"require": {
+		"php": "^8.2",
 		"ramsey/uuid": "^4.7",
 		"illuminate/container": "^12.12"
 	},
@@ -40,5 +49,7 @@
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
-	}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
 }
