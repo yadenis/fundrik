@@ -2,9 +2,12 @@
 	"name": "fundrik/core",
 	"description": "Core library for the Fundrik fundraising solution",
 	"keywords": [
-		"crowdfunding",
 		"fundraising",
-		"donations"
+		"crowdfunding",
+		"donations",
+		"nonprofit",
+		"charity",
+		"payment"
 	],
 	"homepage": "https://fundrik.ru",
 	"type": "library",
