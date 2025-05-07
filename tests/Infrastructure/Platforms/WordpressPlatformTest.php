@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\Test;
 class WordpressPlatformTest extends FundrikTestCase {
 
 	#[Test]
-	public function escape_html_delegates_to_esc_html(): void {
+	public function escape_html_delegates_to_esc_html() {
 
 		require_once FUNDRIK_TESTS_PATH . '/mocks/esc_html.php';
 

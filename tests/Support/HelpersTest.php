@@ -30,7 +30,7 @@ final class HelpersTest extends FundrikTestCase {
 	}
 
 	#[Test]
-	public function fundrik_escape_html_delegates_to_platform(): void {
+	public function fundrik_escape_html_delegates_to_platform() {
 
 		$platform_mock = $this->createMock( PlatformInterface::class );
 

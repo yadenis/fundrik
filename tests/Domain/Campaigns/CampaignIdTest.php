@@ -16,9 +16,9 @@ class CampaignIdTest extends FundrikTestCase {
 	#[Test]
 	public function creates_from_positive_int() {
 
-		$id = CampaignId::create( 123 );
+		$campaign_id = CampaignId::create( 123 );
 
-		$this->assertSame( '123', (string) $id );
+		$this->assertSame( '123', (string) $campaign_id );
 	}
 
 	#[Test]
@@ -40,10 +40,10 @@ class CampaignIdTest extends FundrikTestCase {
 	#[Test]
 	public function creates_from_valid_uuid() {
 
-		$uuid = '0196930b-f2ef-7ec8-b685-cffc19cbf0e3';
-		$id   = CampaignId::create( $uuid );
+		$uuid        = '0196930b-f2ef-7ec8-b685-cffc19cbf0e3';
+		$campaign_id = CampaignId::create( $uuid );
 
-		$this->assertSame( $uuid, (string) $id );
+		$this->assertSame( $uuid, (string) $campaign_id );
 	}
 
 	#[Test]
@@ -57,9 +57,12 @@ class CampaignIdTest extends FundrikTestCase {
 	#[Test]
 	public function checks_uuid_case_normalization() {
 
-		$uuid = '0196A27F-1441-7692-AAEF-92889618FC12';
-		$id   = CampaignId::create( $uuid );
+		$uuid        = '0196A27F-1441-7692-AAEF-92889618FC12';
+		$campaign_id = CampaignId::create( $uuid );
 
-		$this->assertSame( '0196a27f-1441-7692-aaef-92889618fc12', (string) $id );
+		$this->assertSame(
+			'0196a27f-1441-7692-aaef-92889618fc12',
+			(string) $campaign_id
+		);
 	}
 }

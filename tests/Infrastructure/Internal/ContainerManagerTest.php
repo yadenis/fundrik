@@ -20,7 +20,7 @@ final class ContainerManagerTest extends TestCase {
 	}
 
 	#[Test]
-	public function returns_container_instance(): void {
+	public function returns_container_instance() {
 
 		$container = ContainerManager::get();
 
@@ -28,7 +28,7 @@ final class ContainerManagerTest extends TestCase {
 	}
 
 	#[Test]
-	public function returns_same_container_instance(): void {
+	public function returns_same_container_instance() {
 
 		$first  = ContainerManager::get();
 		$second = ContainerManager::get();
@@ -37,7 +37,7 @@ final class ContainerManagerTest extends TestCase {
 	}
 
 	#[Test]
-	public function overrides_container(): void {
+	public function overrides_container() {
 
 		$container = new Container();
 
