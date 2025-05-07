@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Application\Campaigns;
+namespace Fundrik\Core\Tests\Application\Campaigns;
 
-use Fundrik\Application\Campaigns\CampaignDtoFactory;
-use Fundrik\Domain\Campaigns\CampaignDto;
-use Fundrik\Tests\FundrikTestCase;
+use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
+use Fundrik\Core\Domain\Campaigns\CampaignDto;
+use Fundrik\Core\Tests\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 

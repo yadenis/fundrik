@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Infrastructure\Internal;
+namespace Fundrik\Core\Infrastructure\Internal;
 
 /**
  * Manages a singleton instance of the Fundrik container.

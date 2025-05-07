@@ -9,9 +9,9 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Application\Campaigns;
+namespace Fundrik\Core\Application\Campaigns;
 
-use Fundrik\Domain\Campaigns\CampaignDto;
+use Fundrik\Core\Domain\Campaigns\CampaignDto;
 
 /**
  * Internal factory for creating CampaignDto objects from raw data.

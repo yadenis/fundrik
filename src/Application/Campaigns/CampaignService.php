@@ -7,12 +7,12 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Application\Campaigns;
+namespace Fundrik\Core\Application\Campaigns;
 
-use Fundrik\Domain\Campaigns\Campaign;
-use Fundrik\Domain\Campaigns\CampaignFactory;
-use Fundrik\Domain\Campaigns\CampaignId;
-use Fundrik\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
+use Fundrik\Core\Domain\Campaigns\Campaign;
+use Fundrik\Core\Domain\Campaigns\CampaignFactory;
+use Fundrik\Core\Domain\Campaigns\CampaignId;
+use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
 
 /**
  * Application service for coordinating access to campaign data and behavior.

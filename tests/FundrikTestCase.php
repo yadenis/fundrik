@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests;
+namespace Fundrik\Core\Tests;
 
-use Fundrik\Infrastructure\Internal\Container;
-use Fundrik\Infrastructure\Internal\ContainerManager;
+use Fundrik\Core\Infrastructure\Internal\Container;
+use Fundrik\Core\Infrastructure\Internal\ContainerManager;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
 
 abstract class FundrikTestCase extends PHPUnitTestCase {

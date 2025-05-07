@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Infrastructure\Internal;
+namespace Fundrik\Core\Infrastructure\Internal;
 
 use Illuminate\Container\Container as IlluminateContainer;
 

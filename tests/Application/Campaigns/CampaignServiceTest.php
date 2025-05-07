@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Application\Campaigns;
+namespace Fundrik\Core\Tests\Application\Campaigns;
 
-use Fundrik\Application\Campaigns\CampaignService;
-use Fundrik\Domain\Campaigns\Campaign;
-use Fundrik\Domain\Campaigns\CampaignDto;
-use Fundrik\Domain\Campaigns\CampaignFactory;
-use Fundrik\Domain\Campaigns\CampaignId;
-use Fundrik\Domain\Campaigns\CampaignTarget;
-use Fundrik\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
-use Fundrik\Tests\FundrikTestCase;
+use Fundrik\Core\Application\Campaigns\CampaignService;
+use Fundrik\Core\Domain\Campaigns\Campaign;
+use Fundrik\Core\Domain\Campaigns\CampaignDto;
+use Fundrik\Core\Domain\Campaigns\CampaignFactory;
+use Fundrik\Core\Domain\Campaigns\CampaignId;
+use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
+use Fundrik\Core\Tests\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;

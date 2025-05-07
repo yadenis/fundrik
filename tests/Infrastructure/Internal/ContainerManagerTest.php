@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Fundrik\Infrastructure\Internal\Container;
-use Fundrik\Infrastructure\Internal\ContainerManager;
+use Fundrik\Core\Infrastructure\Internal\Container;
+use Fundrik\Core\Infrastructure\Internal\ContainerManager;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

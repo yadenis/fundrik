@@ -1,16 +1,16 @@
 <?php
 /**
- * Platform abstraction interface for Fundrik.
+ * Interface for abstracting platform-specific utilities.
  *
- * Defines a contract for platform-specific functionality that can be
- * implemented for WordPress or other environments to keep core logic decoupled.
+ * Provides a contract for implementing core utility behaviors,
+ * allowing the rest of the application to remain decoupled from the underlying platform.
  *
  * @since 1.0.0
  */
 
 declare(strict_types=1);
 
-namespace Fundrik\Infrastructure\Platforms;
+namespace Fundrik\Core\Infrastructure\Platforms\Interfaces;
 
 interface PlatformInterface {
 

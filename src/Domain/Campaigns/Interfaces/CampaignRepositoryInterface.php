@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Domain\Campaigns\Interfaces;
+namespace Fundrik\Core\Domain\Campaigns\Interfaces;
 
-use Fundrik\Domain\Campaigns\CampaignDto;
-use Fundrik\Domain\Campaigns\CampaignId;
+use Fundrik\Core\Domain\Campaigns\CampaignDto;
+use Fundrik\Core\Domain\Campaigns\CampaignId;
 
 interface CampaignRepositoryInterface {
 

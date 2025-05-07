@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Domain\Campaigns;
+namespace Fundrik\Core\Domain\Campaigns;
 
 /**
  * Represents a campaign.

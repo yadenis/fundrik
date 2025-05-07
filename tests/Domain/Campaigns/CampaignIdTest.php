@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Domain\Campaigns;
+namespace Fundrik\Core\Tests\Domain\Campaigns;
 
-use Fundrik\Domain\Campaigns\CampaignId;
-use Fundrik\Tests\FundrikTestCase;
+use Fundrik\Core\Domain\Campaigns\CampaignId;
+use Fundrik\Core\Tests\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;

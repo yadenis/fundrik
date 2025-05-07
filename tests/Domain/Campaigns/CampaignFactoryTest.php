@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Domain\Campaigns;
+namespace Fundrik\Core\Tests\Domain\Campaigns;
 
-use Fundrik\Domain\Campaigns\Campaign;
-use Fundrik\Domain\Campaigns\CampaignDto;
-use Fundrik\Domain\Campaigns\CampaignFactory;
-use Fundrik\Domain\Campaigns\CampaignId;
-use Fundrik\Domain\Campaigns\CampaignTarget;
-use Fundrik\Tests\FundrikTestCase;
+use Fundrik\Core\Domain\Campaigns\Campaign;
+use Fundrik\Core\Domain\Campaigns\CampaignDto;
+use Fundrik\Core\Domain\Campaigns\CampaignFactory;
+use Fundrik\Core\Domain\Campaigns\CampaignId;
+use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Tests\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;

@@ -7,7 +7,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Domain\Campaigns\Interfaces;
+namespace Fundrik\Core\Domain\Campaigns\Interfaces;
 
 interface QueryExecutorInterface {
 

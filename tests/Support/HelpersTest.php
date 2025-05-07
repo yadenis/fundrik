@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Tests\Support;
+namespace Fundrik\Core\Tests\Support;
 
-use Fundrik\Infrastructure\Internal\Container;
-use Fundrik\Infrastructure\Internal\ContainerManager;
-use Fundrik\Infrastructure\Platforms\PlatformInterface;
-use Fundrik\Tests\FundrikTestCase;
+use Fundrik\Core\Infrastructure\Internal\Container;
+use Fundrik\Core\Infrastructure\Internal\ContainerManager;
+use Fundrik\Core\Infrastructure\Platforms\Interfaces\PlatformInterface;
+use Fundrik\Core\Tests\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;

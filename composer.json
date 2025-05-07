@@ -1,13 +1,20 @@
 {
-	"autoload": {
-		"psr-4": {
-			"Fundrik\\": "src",
-			"Fundrik\\Tests\\": "tests"
-		},
-		"files": [
-			"src/Support/helpers.php",
-			"bootstrap/init.php"
-		]
+	"name": "fundrik/core",
+	"description": "Fundraising solution core library",
+	"authors": [
+		{
+			"name": "Denis Yanchevskiy",
+			"email": "denis@denisco.pro"
+		}
+	],
+	"type": "library",
+	"homepage": "https://fundrik.ru",
+	"license": "GPL-3.0-or-later",
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"ramsey/uuid": "^4.7",
+		"illuminate/container": "^12.12"
 	},
 	"require-dev": {
 		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
@@ -16,13 +23,22 @@
 		"phpcompatibility/phpcompatibility-wp": "^2.1",
 		"phpunit/phpunit": "^11.5"
 	},
+	"autoload": {
+		"psr-4": {
+			"Fundrik\\Core\\": "src/"
+		},
+		"files": [
+			"src/Support/helpers.php"
+		]
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"Fundrik\\Core\\Tests\\": "tests/"
+		}
+	},
 	"config": {
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
-	},
-	"require": {
-		"ramsey/uuid": "^4.7",
-		"illuminate/container": "^12.12"
 	}
 }
