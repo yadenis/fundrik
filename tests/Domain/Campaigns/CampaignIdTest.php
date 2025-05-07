@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Fundrik\Core\Tests\Domain\Campaigns;
 
 use Fundrik\Core\Domain\Campaigns\CampaignId;
-use Fundrik\Core\Tests\FundrikTestCase;
+use Fundrik\Core\Support\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;

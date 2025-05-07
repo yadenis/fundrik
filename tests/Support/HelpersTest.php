@@ -7,7 +7,7 @@ namespace Fundrik\Core\Tests\Support;
 use Fundrik\Core\Infrastructure\Internal\Container;
 use Fundrik\Core\Infrastructure\Internal\ContainerManager;
 use Fundrik\Core\Infrastructure\Platforms\Interfaces\PlatformInterface;
-use Fundrik\Core\Tests\FundrikTestCase;
+use Fundrik\Core\Support\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;

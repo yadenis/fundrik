@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Core\Tests;
+namespace Fundrik\Core\Support;
 
 use Fundrik\Core\Infrastructure\Internal\Container;
 use Fundrik\Core\Infrastructure\Internal\ContainerManager;

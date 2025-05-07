@@ -6,7 +6,7 @@ namespace Fundrik\Core\Tests\Application\Campaigns;
 
 use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
-use Fundrik\Core\Tests\FundrikTestCase;
+use Fundrik\Core\Support\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 

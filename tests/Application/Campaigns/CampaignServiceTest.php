@@ -11,7 +11,7 @@ use Fundrik\Core\Domain\Campaigns\CampaignFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
-use Fundrik\Core\Tests\FundrikTestCase;
+use Fundrik\Core\Support\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
