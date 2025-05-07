@@ -39,7 +39,7 @@ final readonly class WpdbCampaignRepository implements CampaignRepositoryInterfa
 	}
 
 	/**
-	 * Get a campaign by its ID.
+	 * Get a campaign DTO by its ID.
 	 *
 	 * @since 1.0.0
 	 *
