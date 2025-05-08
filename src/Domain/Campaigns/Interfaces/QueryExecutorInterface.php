@@ -19,7 +19,7 @@ interface QueryExecutorInterface {
 	 * @param string     $table The name of the table.
 	 * @param int|string $id    The value of the primary key (integer or UUID).
 	 *
-	 * @return array<string,mixed>|null The result as an associative array, or null if not found.
+	 * @return array<string, mixed>|null The result as an associative array, or null if not found.
 	 */
 	public function get_by_id( string $table, int|string $id ): ?array;
 
@@ -30,7 +30,7 @@ interface QueryExecutorInterface {
 	 *
 	 * @param string $table The name of the table.
 	 *
-	 * @return array<int,array<string,mixed>> An array of rows as associative arrays.
+	 * @return array<int, array<string, mixed>> An array of rows as associative arrays.
 	 */
 	public function get_all( string $table ): array;
 }
