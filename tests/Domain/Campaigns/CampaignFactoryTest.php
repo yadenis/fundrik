@@ -9,17 +9,17 @@ use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\CampaignFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
-use Fundrik\Core\Support\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignFactory::class )]
 #[UsesClass( Campaign::class )]
 #[UsesClass( CampaignId::class )]
 #[UsesClass( CampaignTarget::class )]
-class CampaignFactoryTest extends FundrikTestCase {
+class CampaignFactoryTest extends TestCase {
 
 	#[Test]
 	public function creates_campaign_with_int_id() {

@@ -6,18 +6,16 @@ namespace Fundrik\Core\Tests\Support;
 
 use Fundrik\Core\Infrastructure\Internal\Container;
 use Fundrik\Core\Infrastructure\Internal\ContainerManager;
-use Fundrik\Core\Infrastructure\Platforms\Interfaces\PlatformInterface;
-use Fundrik\Core\Support\FundrikTestCase;
+use Fundrik\Core\Infrastructure\Platform\Interfaces\PlatformInterface;
 use PHPUnit\Framework\Attributes\CoversFunction;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\TestCase;
 
 #[CoversFunction( 'fundrik' )]
 #[CoversFunction( 'fundrik_escape_html' )]
 #[UsesClass( ContainerManager::class )]
-final class HelpersTest extends FundrikTestCase {
-
-	protected bool $use_isolated_container = true;
+final class HelpersTest extends TestCase {
 
 	#[Test]
 	public function fundrik_returns_singleton_container() {

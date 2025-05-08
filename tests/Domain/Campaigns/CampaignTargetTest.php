@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Fundrik\Core\Tests\Domain\Campaigns;
 
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
-use Fundrik\Core\Support\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignTarget::class )]
-class CampaignTargetTest extends FundrikTestCase {
+class CampaignTargetTest extends TestCase {
 
 	#[Test]
 	public function creates_when_enabled_target_with_amount() {

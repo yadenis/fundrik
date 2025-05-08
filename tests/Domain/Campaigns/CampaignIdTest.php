@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Fundrik\Core\Tests\Domain\Campaigns;
 
 use Fundrik\Core\Domain\Campaigns\CampaignId;
-use Fundrik\Core\Support\FundrikTestCase;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignId::class )]
-class CampaignIdTest extends FundrikTestCase {
+class CampaignIdTest extends TestCase {
 
 	#[Test]
 	public function creates_from_positive_int() {

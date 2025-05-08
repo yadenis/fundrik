@@ -6,12 +6,12 @@ namespace Fundrik\Core\Tests\Application\Campaigns;
 
 use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
-use Fundrik\Core\Support\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignDtoFactory::class )]
-class CampaignDtoFactoryTest extends FundrikTestCase {
+class CampaignDtoFactoryTest extends TestCase {
 
 	#[Test]
 	public function creates_dto_from_array() {

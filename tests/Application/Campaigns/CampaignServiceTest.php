@@ -11,17 +11,17 @@ use Fundrik\Core\Domain\Campaigns\CampaignFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
-use Fundrik\Core\Support\FundrikTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignService::class )]
 #[UsesClass( CampaignFactory::class )]
 #[UsesClass( CampaignId::class )]
 #[UsesClass( CampaignTarget::class )]
-class CampaignServiceTest extends FundrikTestCase {
+class CampaignServiceTest extends TestCase {
 
 	private CampaignRepositoryInterface&MockObject $repository;
 
