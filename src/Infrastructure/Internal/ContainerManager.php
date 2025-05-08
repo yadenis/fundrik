@@ -36,7 +36,8 @@ final class ContainerManager {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return Container
+	 * @return Container The current shared container instance, 
+	 *                   newly created if it was not previously set.
 	 */
 	public static function get(): Container {
 
@@ -50,7 +51,7 @@ final class ContainerManager {
 	/**
 	 * Sets the container instance.
 	 *
-	 * Used primarily in tests to inject a custom container.
+	 * Used in tests to inject a custom container.
 	 *
 	 * @since 1.0.0
 	 *
@@ -59,5 +60,34 @@ final class ContainerManager {
 	public static function set( Container $container ): void {
 
 		self::$container = $container;
+	}
+
+	/**
+	 * Resets the container instance to null.
+	 *
+	 * Used to clear the container state between tests to ensure isolation 
+ 	 * and prevent shared state between tests.
+	 *
+	 * @since 1.0.0
+	 */
+	public static function reset(): void {
+
+		self::$container = null;
+	}
+
+	/**
+	 * Creates and sets a new container instance, replacing any existing one.
+	 *
+	 * Useful in tests to ensure a fresh container state.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return Container The newly created container.
+	 */
+	public static function get_fresh(): Container {
+
+		self::$container = new Container();
+
+		return self::$container;
 	}
 }
