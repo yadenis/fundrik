@@ -3,8 +3,6 @@
  * CampaignDtoFactory class.
  *
  * @since 1.0.0
- *
- * @internal
  */
 
 declare(strict_types=1);
@@ -14,14 +12,11 @@ namespace Fundrik\Core\Application\Campaigns;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
 
 /**
- * Internal factory for creating CampaignDto objects from raw data.
+ * Factory for creating CampaignDto objects from trusted data arrays.
  *
- * Used exclusively by infrastructure to convert DB arrays into DTOs.
- * Assumes trusted data (no validation is performed).
+ * Assumes data has already been validated or is trusted (no checks performed).
  *
  * @since 1.0.0
- *
- * @internal
  */
 final readonly class CampaignDtoFactory {
 
