@@ -36,7 +36,7 @@ final class ContainerManager {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return Container The current shared container instance, 
+	 * @return Container The current shared container instance,
 	 *                   newly created if it was not previously set.
 	 */
 	public static function get(): Container {
@@ -65,8 +65,8 @@ final class ContainerManager {
 	/**
 	 * Resets the container instance to null.
 	 *
-	 * Used to clear the container state between tests to ensure isolation 
- 	 * and prevent shared state between tests.
+	 * Used to clear the container state between tests to ensure isolation
+	 * and prevent shared state between tests.
 	 *
 	 * @since 1.0.0
 	 */
