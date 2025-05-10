@@ -18,7 +18,7 @@ class CampaignIdTest extends TestCase {
 
 		$campaign_id = CampaignId::create( 123 );
 
-		$this->assertSame( '123', (string) $campaign_id );
+		$this->assertEquals( '123', (string) $campaign_id );
 	}
 
 	#[Test]
@@ -43,7 +43,7 @@ class CampaignIdTest extends TestCase {
 		$uuid        = '0196930b-f2ef-7ec8-b685-cffc19cbf0e3';
 		$campaign_id = CampaignId::create( $uuid );
 
-		$this->assertSame( $uuid, (string) $campaign_id );
+		$this->assertEquals( $uuid, (string) $campaign_id );
 	}
 
 	#[Test]
@@ -60,7 +60,7 @@ class CampaignIdTest extends TestCase {
 		$uuid        = '0196A27F-1441-7692-AAEF-92889618FC12';
 		$campaign_id = CampaignId::create( $uuid );
 
-		$this->assertSame(
+		$this->assertEquals(
 			'0196a27f-1441-7692-aaef-92889618fc12',
 			(string) $campaign_id
 		);

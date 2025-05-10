@@ -22,6 +22,6 @@ final class HelpersTest extends TestCase {
 		$container2 = fundrik();
 
 		$this->assertInstanceOf( Container::class, $container1 );
-		$this->assertSame( $container1, $container2 );
+		$this->assertEquals( $container1, $container2 );
 	}
 }

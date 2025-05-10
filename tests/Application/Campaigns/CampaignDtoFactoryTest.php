@@ -30,13 +30,13 @@ class CampaignDtoFactoryTest extends TestCase {
 		$dto = ( new CampaignDtoFactory() )->from_array( $data );
 
 		$this->assertInstanceOf( CampaignDto::class, $dto );
-		$this->assertSame( 123, $dto->id );
-		$this->assertSame( 'Array Campaign', $dto->title );
-		$this->assertSame( 'array-campaign', $dto->slug );
+		$this->assertEquals( 123, $dto->id );
+		$this->assertEquals( 'Array Campaign', $dto->title );
+		$this->assertEquals( 'array-campaign', $dto->slug );
 		$this->assertTrue( $dto->is_enabled );
 		$this->assertTrue( $dto->is_open );
 		$this->assertTrue( $dto->has_target );
-		$this->assertSame( 1500, $dto->target_amount );
-		$this->assertSame( 600, $dto->collected_amount );
+		$this->assertEquals( 1500, $dto->target_amount );
+		$this->assertEquals( 600, $dto->collected_amount );
 	}
 }

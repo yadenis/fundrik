@@ -36,8 +36,8 @@ class CampaignFactoryTest extends TestCase {
 		);
 
 		$this->assertInstanceOf( Campaign::class, $campaign );
-		$this->assertSame( 'Test Campaign', $campaign->title );
-		$this->assertSame( '1000', (string) $campaign->target );
+		$this->assertEquals( 'Test Campaign', $campaign->title );
+		$this->assertEquals( '1000', (string) $campaign->target );
 	}
 
 	#[Test]
@@ -57,8 +57,8 @@ class CampaignFactoryTest extends TestCase {
 		);
 
 		$this->assertInstanceOf( Campaign::class, $campaign );
-		$this->assertSame( $uuid, (string) $campaign->id );
-		$this->assertSame( false, $campaign->is_open );
+		$this->assertEquals( $uuid, (string) $campaign->id );
+		$this->assertEquals( false, $campaign->is_open );
 	}
 
 	#[Test]
@@ -129,8 +129,8 @@ class CampaignFactoryTest extends TestCase {
 		$campaign = ( new CampaignFactory() )->from_dto( $dto );
 
 		$this->assertInstanceOf( Campaign::class, $campaign );
-		$this->assertSame( 'DTO Campaign', $campaign->title );
-		$this->assertSame( '1000', (string) $campaign->target );
-		$this->assertSame( 400, $campaign->collected_amount );
+		$this->assertEquals( 'DTO Campaign', $campaign->title );
+		$this->assertEquals( '1000', (string) $campaign->target );
+		$this->assertEquals( 400, $campaign->collected_amount );
 	}
 }

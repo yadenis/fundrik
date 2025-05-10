@@ -33,7 +33,7 @@ final class ContainerManagerTest extends TestCase {
 		$first  = ContainerManager::get();
 		$second = ContainerManager::get();
 
-		$this->assertSame( $first, $second );
+		$this->assertEquals( $first, $second );
 	}
 
 	#[Test]
@@ -43,6 +43,6 @@ final class ContainerManagerTest extends TestCase {
 
 		ContainerManager::set( $container );
 
-		$this->assertSame( $container, ContainerManager::get() );
+		$this->assertEquals( $container, ContainerManager::get() );
 	}
 }

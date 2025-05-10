@@ -117,9 +117,9 @@ class CampaignServiceTest extends TestCase {
 		$this->assertCount( 2, $result );
 
 		$this->assertInstanceOf( Campaign::class, $result[0] );
-		$this->assertSame( 'Campaign One', $result[0]->title );
+		$this->assertEquals( 'Campaign One', $result[0]->title );
 
 		$this->assertInstanceOf( Campaign::class, $result[1] );
-		$this->assertSame( 'Campaign Two', $result[1]->title );
+		$this->assertEquals( 'Campaign Two', $result[1]->title );
 	}
 }

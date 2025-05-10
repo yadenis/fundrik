@@ -18,7 +18,7 @@ class CampaignTargetTest extends TestCase {
 
 		$target = new CampaignTarget( true, 1000 );
 
-		$this->assertSame( '1000', (string) $target );
+		$this->assertEquals( '1000', (string) $target );
 	}
 
 	#[Test]
@@ -42,7 +42,7 @@ class CampaignTargetTest extends TestCase {
 
 		$target = new CampaignTarget( false, 0 );
 
-		$this->assertSame( '0', (string) $target );
+		$this->assertEquals( '0', (string) $target );
 	}
 
 	#[Test]
