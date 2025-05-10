@@ -26,6 +26,7 @@ final readonly class CampaignFactory {
 	 * @param int|string $id Campaign ID, can be either an integer or a UUID string.
 	 * @param string     $title Campaign title.
 	 * @param string     $slug URL-friendly identifier for the campaign.
+	 * @param bool       $is_enabled Flag indicating if the campaign is enabled (visible and accessible).
 	 * @param bool       $is_open Flag indicating if the campaign is open.
 	 * @param bool       $has_target Flag indicating if the campaign has a target.
 	 * @param int        $target_amount Target amount for the campaign.
@@ -38,6 +39,7 @@ final readonly class CampaignFactory {
 		int|string $id,
 		string $title,
 		string $slug,
+		bool $is_enabled,
 		bool $is_open,
 		bool $has_target,
 		int $target_amount = 0,
@@ -51,6 +53,7 @@ final readonly class CampaignFactory {
 			id: $id,
 			title: $title,
 			slug: $slug,
+			is_enabled: $is_enabled,
 			is_open: $is_open,
 			target: $target,
 			collected_amount: $collected_amount
@@ -74,6 +77,7 @@ final readonly class CampaignFactory {
 			id: $dto->id,
 			title: $dto->title,
 			slug: $dto->slug,
+			is_enabled: $dto->is_enabled,
 			is_open: $dto->is_open,
 			has_target: $dto->has_target,
 			target_amount: $dto->target_amount,

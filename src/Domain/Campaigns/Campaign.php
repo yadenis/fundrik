@@ -28,6 +28,7 @@ final readonly class Campaign {
 	 * @param CampaignId     $id Campaign ID (can be either int or UUID).
 	 * @param string         $title Campaign title.
 	 * @param string         $slug URL-friendly identifier for the campaign.
+	 * @param bool           $is_enabled Flag indicating if the campaign is enabled (visible and accessible).
 	 * @param bool           $is_open Flag indicating if the campaign is open.
 	 * @param CampaignTarget $target Campaign target (enabled status and amount).
 	 * @param int            $collected_amount Amount collected for the campaign.
@@ -36,6 +37,7 @@ final readonly class Campaign {
 		public CampaignId $id,
 		public string $title,
 		public string $slug,
+		public bool $is_enabled,
 		public bool $is_open,
 		public CampaignTarget $target,
 		public int $collected_amount

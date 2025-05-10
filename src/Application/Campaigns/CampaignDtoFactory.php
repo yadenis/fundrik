@@ -29,6 +29,7 @@ final readonly class CampaignDtoFactory {
 	 *                    - id               (int|string)
 	 *                    - title            (string)
 	 *                    - slug             (string)
+	 *                    - is_enabled       (bool)
 	 *                    - is_open          (bool)
 	 *                    - has_target       (bool)
 	 *                    - target_amount    (int)
@@ -42,6 +43,7 @@ final readonly class CampaignDtoFactory {
 			id: $data['id'],
 			title: $data['title'],
 			slug: $data['slug'],
+			is_enabled: $data['is_enabled'],
 			is_open: $data['is_open'],
 			has_target: $data['has_target'],
 			target_amount: $data['target_amount'],
