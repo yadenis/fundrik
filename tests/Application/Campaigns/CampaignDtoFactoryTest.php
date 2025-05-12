@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace Fundrik\Core\Tests\Application\Campaigns;
 
 use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
+use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
+use Fundrik\Core\Domain\Campaigns\CampaignId;
+use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -38,5 +41,31 @@ class CampaignDtoFactoryTest extends TestCase {
 		$this->assertTrue( $dto->has_target );
 		$this->assertEquals( 1500, $dto->target_amount );
 		$this->assertEquals( 600, $dto->collected_amount );
+	}
+
+	#[Test]
+	public function creates_dto_from_campaign() {
+
+		$campaign = new Campaign(
+			id: CampaignId::create( 456 ),
+			title: 'Domain Campaign',
+			slug: 'domain-campaign',
+			is_enabled: false,
+			is_open: true,
+			target: new CampaignTarget( is_enabled: false, amount: 0 ),
+			collected_amount: 300
+		);
+
+		$dto = ( new CampaignDtoFactory() )->from_campaign( $campaign );
+
+		$this->assertInstanceOf( CampaignDto::class, $dto );
+		$this->assertEquals( 456, $dto->id );
+		$this->assertEquals( 'Domain Campaign', $dto->title );
+		$this->assertEquals( 'domain-campaign', $dto->slug );
+		$this->assertFalse( $dto->is_enabled );
+		$this->assertTrue( $dto->is_open );
+		$this->assertFalse( $dto->has_target );
+		$this->assertEquals( 0, $dto->target_amount );
+		$this->assertEquals( 300, $dto->collected_amount );
 	}
 }

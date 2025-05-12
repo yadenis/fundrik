@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Application\Campaigns;
 
+use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
 
 /**
@@ -21,7 +22,7 @@ use Fundrik\Core\Domain\Campaigns\CampaignDto;
 final readonly class CampaignDtoFactory {
 
 	/**
-	 * Create a CampaignDto instance from an associative array of data.
+	 * Create a CampaignDto from an associative array of data.
 	 *
 	 * @since 1.0.0
 	 *
@@ -48,6 +49,29 @@ final readonly class CampaignDtoFactory {
 			has_target: $data['has_target'],
 			target_amount: $data['target_amount'],
 			collected_amount: $data['collected_amount']
+		);
+	}
+
+	/**
+	 * Create a CampaignDto from a Campaign.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Campaign $campaign The Campaign entity.
+	 *
+	 * @return CampaignDto A DTO representing the campaign.
+	 */
+	public function from_campaign( Campaign $campaign ): CampaignDto {
+
+		return new CampaignDto(
+			id: $campaign->id->value,
+			title: $campaign->title,
+			slug: $campaign->slug,
+			is_enabled: $campaign->is_enabled,
+			is_open: $campaign->is_open,
+			has_target: $campaign->target->is_enabled,
+			target_amount: $campaign->target->amount,
+			collected_amount: $campaign->collected_amount
 		);
 	}
 }
