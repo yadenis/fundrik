@@ -11,9 +11,12 @@ use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignDtoFactory::class )]
+#[UsesClass( CampaignId::class )]
+#[UsesClass( CampaignTarget::class )]
 class CampaignDtoFactoryTest extends TestCase {
 
 	#[Test]

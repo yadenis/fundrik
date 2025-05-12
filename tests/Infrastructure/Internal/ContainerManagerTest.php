@@ -28,7 +28,7 @@ final class ContainerManagerTest extends TestCase {
 	}
 
 	#[Test]
-	public function returns_same_container_instance() {
+	public function returns_same_container_instance_on_multiple_calls() {
 
 		$first  = ContainerManager::get();
 		$second = ContainerManager::get();
@@ -44,5 +44,30 @@ final class ContainerManagerTest extends TestCase {
 		ContainerManager::set( $container );
 
 		$this->assertEquals( $container, ContainerManager::get() );
+	}
+
+	#[Test]
+	public function reset_clears_the_container(): void {
+
+		$original = ContainerManager::get();
+
+		ContainerManager::reset();
+
+		$new_instance = ContainerManager::get();
+
+		$this->assertNotSame( $original, $new_instance );
+	}
+
+	#[Test]
+	public function get_fresh_replaces_and_returns_new_container(): void {
+
+		$first = ContainerManager::get();
+
+		$fresh = ContainerManager::get_fresh();
+
+		$this->assertInstanceOf( Container::class, $fresh );
+		$this->assertNotSame( $first, $fresh );
+
+		$this->assertSame( $fresh, ContainerManager::get() );
 	}
 }
