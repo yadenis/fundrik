@@ -42,7 +42,7 @@ final readonly class CampaignFactory {
 		bool $is_enabled,
 		bool $is_open,
 		bool $has_target,
-		int $target_amount = 0,
+		int $target_amount,
 		int $collected_amount
 	): Campaign {
 
