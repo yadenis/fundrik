@@ -42,7 +42,8 @@ final class ContainerManager {
 	public static function get(): Container {
 
 		if ( null === self::$container ) {
-			self::$container = new Container();
+
+			self::set( new Container() );
 		}
 
 		return self::$container;
@@ -55,9 +56,9 @@ final class ContainerManager {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param Container $container The container instance to set.
+	 * @param Container|null $container The container to set, or null to clear.
 	 */
-	public static function set( Container $container ): void {
+	public static function set( ?Container $container ): void {
 
 		self::$container = $container;
 	}
@@ -72,7 +73,7 @@ final class ContainerManager {
 	 */
 	public static function reset(): void {
 
-		self::$container = null;
+		self::set( null );
 	}
 
 	/**
@@ -86,8 +87,8 @@ final class ContainerManager {
 	 */
 	public static function get_fresh(): Container {
 
-		self::$container = new Container();
+		self::set( new Container() );
 
-		return self::$container;
+		return self::get();
 	}
 }
