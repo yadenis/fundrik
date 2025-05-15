@@ -7,8 +7,8 @@ namespace Fundrik\Core\Tests\Domain\Campaigns;
 use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\CampaignFactory;
-use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Domain\EntityId;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignFactory::class )]
 #[UsesClass( Campaign::class )]
-#[UsesClass( CampaignId::class )]
+#[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTarget::class )]
 class CampaignFactoryTest extends TestCase {
 

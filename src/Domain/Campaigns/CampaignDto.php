@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Domain\Campaigns;
 
+use Fundrik\Core\Domain\Interfaces\EntityDto;
+
 /**
  * Represents a raw snapshot of campaign data.
  *
@@ -19,7 +21,7 @@ namespace Fundrik\Core\Domain\Campaigns;
  *
  * @codeCoverageIgnore
  */
-final readonly class CampaignDto {
+final readonly class CampaignDto implements EntityDto {
 
 	/**
 	 * CampaignDto constructor.

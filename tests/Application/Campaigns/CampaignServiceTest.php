@@ -8,22 +8,23 @@ use Fundrik\Core\Application\Campaigns\CampaignService;
 use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\CampaignFactory;
-use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
+use Fundrik\Core\Domain\EntityId;
+use Mockery;
+use Mockery\MockInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignService::class )]
 #[UsesClass( CampaignFactory::class )]
-#[UsesClass( CampaignId::class )]
+#[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTarget::class )]
 class CampaignServiceTest extends TestCase {
 
-	private CampaignRepositoryInterface&MockObject $repository;
+	private CampaignRepositoryInterface&MockInterface $repository;
 
 	private CampaignService $service;
 
@@ -31,7 +32,7 @@ class CampaignServiceTest extends TestCase {
 
 		parent::setUp();
 
-		$this->repository = $this->createMock( CampaignRepositoryInterface::class );
+		$this->repository = Mockery::mock( CampaignRepositoryInterface::class );
 
 		$this->service = new CampaignService(
 			new CampaignFactory(),
@@ -40,9 +41,9 @@ class CampaignServiceTest extends TestCase {
 	}
 
 	#[Test]
-	public function get_campaign_by_id_returns_campaign() {
+	public function get_by_id_returns_campaign() {
 
-		$campaign_id = CampaignId::from_int( 123 );
+		$campaign_id = EntityId::from_int( 123 );
 
 		$dto = new CampaignDto(
 			id               : 123,
@@ -56,28 +57,28 @@ class CampaignServiceTest extends TestCase {
 		);
 
 		$this->repository
-			->expects( $this->once() )
-			->method( 'get_by_id' )
+			->shouldReceive( 'get_by_id' )
+			->once()
 			->with( $this->identicalTo( $campaign_id ) )
-			->willReturn( $dto );
+			->andReturn( $dto );
 
-		$result = $this->service->get_campaign_by_id( $campaign_id );
+		$result = $this->service->get_by_id( $campaign_id );
 
 		$this->assertInstanceOf( Campaign::class, $result );
 	}
 
 	#[Test]
-	public function get_campaign_by_id_returns_null_when_not_found() {
+	public function get_by_id_returns_null_when_not_found() {
 
-		$campaign_id = CampaignId::from_int( 999 );
+		$campaign_id = EntityId::from_int( 999 );
 
 		$this->repository
-			->expects( $this->once() )
-			->method( 'get_by_id' )
+			->shouldReceive( 'get_by_id' )
+			->once()
 			->with( $this->identicalTo( $campaign_id ) )
-			->willReturn( null );
+			->andReturn( null );
 
-		$result = $this->service->get_campaign_by_id( $campaign_id );
+		$result = $this->service->get_by_id( $campaign_id );
 
 		$this->assertNull( $result );
 	}
@@ -108,11 +109,11 @@ class CampaignServiceTest extends TestCase {
 		);
 
 		$this->repository
-			->expects( $this->once() )
-			->method( 'get_all' )
-			->willReturn( [ $dto1, $dto2 ] );
+			->shouldReceive( 'get_all' )
+			->once()
+			->andReturn( [ $dto1, $dto2 ] );
 
-		$result = $this->service->get_all_campaigns();
+		$result = $this->service->get_all();
 
 		$this->assertCount( 2, $result );
 

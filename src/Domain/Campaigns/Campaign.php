@@ -9,6 +9,9 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Domain\Campaigns;
 
+use Fundrik\Core\Domain\EntityId;
+use Fundrik\Core\Domain\Interfaces\Entity;
+
 /**
  * Represents a campaign.
  *
@@ -18,14 +21,14 @@ namespace Fundrik\Core\Domain\Campaigns;
  *
  * @codeCoverageIgnore
  */
-final readonly class Campaign {
+final readonly class Campaign implements Entity {
 
 	/**
 	 * Campaign constructor.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param CampaignId     $id Campaign ID (can be either int or UUID).
+	 * @param EntityId       $id Campaign ID (can be either int or UUID).
 	 * @param string         $title Campaign title.
 	 * @param string         $slug URL-friendly identifier for the campaign.
 	 * @param bool           $is_enabled Flag indicating if the campaign is enabled (visible and accessible).
@@ -34,7 +37,7 @@ final readonly class Campaign {
 	 * @param int            $collected_amount Amount collected for the campaign.
 	 */
 	public function __construct(
-		public CampaignId $id,
+		public EntityId $id,
 		public string $title,
 		public string $slug,
 		public bool $is_enabled,

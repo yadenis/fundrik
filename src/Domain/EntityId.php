@@ -1,46 +1,46 @@
 <?php
 /**
- * CampaignId value object.
+ * EntityId value object.
  *
  * @since 1.0.0
  */
 
 declare(strict_types=1);
 
-namespace Fundrik\Core\Domain\Campaigns;
+namespace Fundrik\Core\Domain;
 
 use InvalidArgumentException;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
 
 /**
- * Represents the campaign's ID.
+ * Represents the entity's ID.
  *
  * It can either be an positive integer or a valid UUID string.
  *
  * @since 1.0.0
  */
-final readonly class CampaignId {
+final readonly class EntityId {
 
 	/**
-	 * CampaignId constructor.
+	 * EntityId constructor.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param int|string $value Campaign ID (either an integer or UUID string).
+	 * @param int|string $value Entity ID (either an integer or UUID string).
 	 */
 	private function __construct(
 		public int|string $value
 	) {}
 
 	/**
-	 * Factory method to create a CampaignId instance from either int or string.
+	 * Factory method to create a EntityId instance from either int or string.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param int|string $id The ID (either integer or UUID string).
 	 *
-	 * @return self New instance of CampaignId.
+	 * @return self New instance of EntityId.
 	 *
 	 * @throws InvalidArgumentException If the ID is neither int nor string, or is invalid.
 	 */
@@ -55,38 +55,38 @@ final readonly class CampaignId {
 		}
 
 		// @codeCoverageIgnoreStart
-		throw new InvalidArgumentException( 'CampaignId must be int or UUID string' );
+		throw new InvalidArgumentException( 'EntityId must be int or UUID string' );
 		// @codeCoverageIgnoreEnd
 	}
 
 	/**
-	 * Factory method to create a CampaignId instance from an integer.
+	 * Factory method to create a EntityId instance from an integer.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param int $id The integer ID.
 	 *
-	 * @return self New instance of CampaignId.
+	 * @return self New instance of EntityId.
 	 *
 	 * @throws InvalidArgumentException If the integer ID is not positive.
 	 */
 	public static function from_int( int $id ): self {
 
 		if ( $id <= 0 ) {
-			throw new InvalidArgumentException( "CampaignId must be a positive, given: {$id}" );
+			throw new InvalidArgumentException( "EntityId must be a positive, given: {$id}" );
 		}
 
 		return new self( $id );
 	}
 
 	/**
-	 * Factory method to create a CampaignId instance from a UUID string.
+	 * Factory method to create a EntityId instance from a UUID string.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param string $uuid The UUID string.
 	 *
-	 * @return self New instance of CampaignId.
+	 * @return self New instance of EntityId.
 	 *
 	 * @throws InvalidArgumentException If the UUID string is invalid.
 	 */
@@ -96,18 +96,18 @@ final readonly class CampaignId {
 			return new self( (string) Uuid::fromString( $uuid ) );
 		} catch ( InvalidUuidStringException $e ) {
 			throw new InvalidArgumentException(
-				message: "CampaignId must be a valid UUID, given: {$uuid}",
+				message: "EntityId must be a valid UUID, given: {$uuid}",
 				previous: $e
 			);
 		}
 	}
 
 	/**
-	 * Convert CampaignId to a string.
+	 * Convert EntityId to a string.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return string The campaign ID.
+	 * @return string The entity ID.
 	 */
 	public function __toString(): string {
 

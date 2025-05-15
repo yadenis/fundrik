@@ -7,15 +7,15 @@ namespace Fundrik\Core\Tests\Application\Campaigns;
 use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
 use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignDto;
-use Fundrik\Core\Domain\Campaigns\CampaignId;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Domain\EntityId;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignDtoFactory::class )]
-#[UsesClass( CampaignId::class )]
+#[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTarget::class )]
 class CampaignDtoFactoryTest extends TestCase {
 
@@ -50,7 +50,7 @@ class CampaignDtoFactoryTest extends TestCase {
 	public function creates_dto_from_campaign() {
 
 		$campaign = new Campaign(
-			id: CampaignId::create( 456 ),
+			id: EntityId::create( 456 ),
 			title: 'Domain Campaign',
 			slug: 'domain-campaign',
 			is_enabled: false,

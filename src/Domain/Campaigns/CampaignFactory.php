@@ -9,6 +9,8 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Domain\Campaigns;
 
+use Fundrik\Core\Domain\EntityId;
+
 /**
  * Responsible for creating Campaign instances.
  *
@@ -46,7 +48,7 @@ final readonly class CampaignFactory {
 		int $collected_amount
 	): Campaign {
 
-		$id     = CampaignId::create( $id );
+		$id     = EntityId::create( $id );
 		$target = new CampaignTarget( $has_target, $target_amount );
 
 		$campaign = new Campaign(
