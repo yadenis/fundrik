@@ -28,22 +28,18 @@ class CampaignDto {
 	 *
 	 * @param int|string $id               The campaign ID (integer or UUID).
 	 * @param string     $title            The title of the campaign.
-	 * @param string     $slug             URL-friendly identifier for the campaign.
 	 * @param bool       $is_enabled       Whether the campaign is currently enabled (visible and accessible).
 	 * @param bool       $is_open          Whether the campaign is currently open.
 	 * @param bool       $has_target       Whether the campaign has a target goal.
 	 * @param int        $target_amount    The target amount (if any) for the campaign.
-	 * @param int        $collected_amount The amount collected so far.
 	 */
 	public function __construct(
 		public int|string $id,
 		public string $title,
-		public string $slug,
 		public bool $is_enabled,
 		public bool $is_open,
 		public bool $has_target,
 		public int $target_amount,
-		public int $collected_amount
 	) {
 	}
 }

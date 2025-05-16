@@ -19,6 +19,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignService::class )]
+#[UsesClass( Campaign::class )]
 #[UsesClass( CampaignFactory::class )]
 #[UsesClass( CampaignTarget::class )]
 #[UsesClass( EntityId::class )]
@@ -48,12 +49,10 @@ class CampaignServiceTest extends TestCase {
 		$dto = new CampaignDto(
 			id               : 123,
 			title            : 'Array Campaign',
-			slug             : 'array-campaign',
 			is_enabled       : true,
 			is_open          : true,
 			has_target       : true,
 			target_amount    : 1500,
-			collected_amount : 600,
 		);
 
 		$this->repository
@@ -89,23 +88,19 @@ class CampaignServiceTest extends TestCase {
 		$dto1 = new CampaignDto(
 			id               : 123,
 			title            : 'Campaign One',
-			slug             : 'campaign-one',
 			is_enabled       : true,
 			is_open          : true,
 			has_target       : true,
 			target_amount    : 1500,
-			collected_amount : 600,
 		);
 
 		$dto2 = new CampaignDto(
 			id               : 124,
 			title            : 'Campaign Two',
-			slug             : 'campaign-two',
 			is_enabled       : true,
 			is_open          : true,
 			has_target       : true,
 			target_amount    : 1500,
-			collected_amount : 600,
 		);
 
 		$this->repository
@@ -118,5 +113,95 @@ class CampaignServiceTest extends TestCase {
 		$this->assertCount( 2, $result );
 		$this->assertInstanceOf( Campaign::class, $result[0] );
 		$this->assertInstanceOf( Campaign::class, $result[1] );
+	}
+
+	#[Test]
+	public function save_campaign_inserts_when_not_exists(): void {
+
+		$dto = new CampaignDto(
+			id             : 555,
+			title          : 'New Campaign',
+			is_enabled     : true,
+			is_open        : true,
+			has_target     : false,
+			target_amount  : 0,
+		);
+
+		$this->repository
+			->shouldReceive( 'exists' )
+			->once()
+			->with( Mockery::type( Campaign::class ) )
+			->andReturn( false );
+
+		$this->repository
+			->shouldReceive( 'insert' )
+			->once()
+			->with( Mockery::type( Campaign::class ) )
+			->andReturn( true );
+
+		$result = $this->service->save_campaign( $dto );
+
+		$this->assertTrue( $result );
+	}
+
+	#[Test]
+	public function save_campaign_updates_when_exists(): void {
+
+		$dto = new CampaignDto(
+			id             : 777,
+			title          : 'Existing Campaign',
+			is_enabled     : true,
+			is_open        : false,
+			has_target     : true,
+			target_amount  : 999,
+		);
+
+		$this->repository
+			->shouldReceive( 'exists' )
+			->once()
+			->with( Mockery::type( Campaign::class ) )
+			->andReturn( true );
+
+		$this->repository
+			->shouldReceive( 'update' )
+			->once()
+			->with( Mockery::type( Campaign::class ) )
+			->andReturn( true );
+
+		$result = $this->service->save_campaign( $dto );
+
+		$this->assertTrue( $result );
+	}
+
+	#[Test]
+	public function delete_campaign_returns_true_when_successful(): void {
+
+		$campaign_id = EntityId::create( 42 );
+
+		$this->repository
+			->shouldReceive( 'delete' )
+			->once()
+			->with( $campaign_id )
+			->andReturn( true );
+
+		$result = $this->service->delete_campaign( $campaign_id );
+
+		$this->assertTrue( $result );
+	}
+
+	#[Test]
+	public function delete_campaign_returns_false_when_failed(): void {
+
+		$campaign_id = EntityId::create( 999 );
+
+		$this->repository
+			->shouldReceive( 'delete' )
+			->once()
+			->with( $campaign_id )
+			->andReturn( false );
+
+		$result = $this->service->delete_campaign( $campaign_id );
+
+		$this->assertFalse( $result );
 	}
 }

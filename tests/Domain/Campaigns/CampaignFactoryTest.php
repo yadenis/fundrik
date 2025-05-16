@@ -16,6 +16,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignFactory::class )]
+#[UsesClass( Campaign::class )]
 #[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTarget::class )]
 class CampaignFactoryTest extends TestCase {
@@ -28,24 +29,20 @@ class CampaignFactoryTest extends TestCase {
 		$campaign = ( new CampaignFactory() )->create(
 			id: $id,
 			title: 'Test Campaign',
-			slug: 'test-campaign',
 			is_enabled: true,
 			is_open: false,
 			has_target: true,
 			target_amount: 1000,
-			collected_amount: 200
 		);
 
 		$this->assertInstanceOf( Campaign::class, $campaign );
 
-		$this->assertEquals( $id, $campaign->id->value );
-		$this->assertEquals( 'Test Campaign', $campaign->title );
-		$this->assertEquals( 'test-campaign', $campaign->slug );
-		$this->assertEquals( true, $campaign->is_enabled );
-		$this->assertEquals( false, $campaign->is_open );
-		$this->assertEquals( true, $campaign->target->is_enabled );
-		$this->assertEquals( 1000, $campaign->target->amount );
-		$this->assertEquals( 200, $campaign->collected_amount );
+		$this->assertEquals( $id, $campaign->get_id() );
+		$this->assertEquals( 'Test Campaign', $campaign->get_title() );
+		$this->assertEquals( true, $campaign->is_enabled() );
+		$this->assertEquals( false, $campaign->is_open() );
+		$this->assertEquals( true, $campaign->has_target() );
+		$this->assertEquals( 1000, $campaign->get_target_amount() );
 	}
 
 	#[Test]
@@ -56,17 +53,15 @@ class CampaignFactoryTest extends TestCase {
 		$campaign = ( new CampaignFactory() )->create(
 			id: $uuid,
 			title: 'UUID Campaign',
-			slug: 'uuid-campaign',
 			is_enabled: true,
 			is_open: true,
 			has_target: false,
 			target_amount: 0,
-			collected_amount: 100
 		);
 
 		$this->assertInstanceOf( Campaign::class, $campaign );
 
-		$this->assertEquals( $uuid, $campaign->id->value );
+		$this->assertEquals( $uuid, $campaign->get_id() );
 	}
 
 	#[Test]
@@ -77,12 +72,10 @@ class CampaignFactoryTest extends TestCase {
 		( new CampaignFactory() )->create(
 			id: 1,
 			title: 'Invalid Campaign',
-			slug: 'invalid-campaign',
 			is_enabled: true,
 			is_open: true,
 			has_target: true,
 			target_amount: 0,
-			collected_amount: 0
 		);
 	}
 
@@ -94,12 +87,10 @@ class CampaignFactoryTest extends TestCase {
 		( new CampaignFactory() )->create(
 			id: -1,
 			title: 'Invalid Campaign',
-			slug: 'invalid-campaign',
 			is_enabled: true,
 			is_open: true,
 			has_target: false,
 			target_amount: 0,
-			collected_amount: 0
 		);
 	}
 
@@ -111,25 +102,21 @@ class CampaignFactoryTest extends TestCase {
 		$dto = new CampaignDto(
 			id: $id,
 			title: 'DTO Campaign',
-			slug: 'dto-campaign',
 			is_enabled: false,
 			is_open: true,
 			has_target: true,
 			target_amount: 1000,
-			collected_amount: 400
 		);
 
 		$campaign = ( new CampaignFactory() )->from_dto( $dto );
 
 		$this->assertInstanceOf( Campaign::class, $campaign );
 
-		$this->assertEquals( $id, $campaign->id->value );
-		$this->assertEquals( 'DTO Campaign', $campaign->title );
-		$this->assertEquals( 'dto-campaign', $campaign->slug );
-		$this->assertEquals( false, $campaign->is_enabled );
-		$this->assertEquals( true, $campaign->is_open );
-		$this->assertEquals( true, $campaign->target->is_enabled );
-		$this->assertEquals( 1000, $campaign->target->amount );
-		$this->assertEquals( 400, $campaign->collected_amount );
+		$this->assertEquals( $id, $campaign->get_id() );
+		$this->assertEquals( 'DTO Campaign', $campaign->get_title() );
+		$this->assertEquals( false, $campaign->is_enabled() );
+		$this->assertEquals( true, $campaign->is_open() );
+		$this->assertEquals( true, $campaign->has_target() );
+		$this->assertEquals( 1000, $campaign->get_target_amount() );
 	}
 }

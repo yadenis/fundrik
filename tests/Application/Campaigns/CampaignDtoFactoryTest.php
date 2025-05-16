@@ -17,6 +17,7 @@ use PHPUnit\Framework\Attributes\UsesFunction;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignDtoFactory::class )]
+#[UsesClass( Campaign::class )]
 #[UsesClass( CampaignTarget::class )]
 #[UsesClass( EntityId::class )]
 #[UsesClass( ContainerManager::class )]
@@ -27,14 +28,12 @@ class CampaignDtoFactoryTest extends TestCase {
 	public function creates_dto_from_array(): void {
 
 		$data = [
-			'id'               => 123,
-			'title'            => 'Array Campaign',
-			'slug'             => 'array-campaign',
-			'is_enabled'       => true,
-			'is_open'          => true,
-			'has_target'       => true,
-			'target_amount'    => 1500,
-			'collected_amount' => 600,
+			'id'            => 123,
+			'title'         => 'Array Campaign',
+			'is_enabled'    => true,
+			'is_open'       => true,
+			'has_target'    => true,
+			'target_amount' => 1500,
 		];
 
 		$dto = ( new CampaignDtoFactory() )->from_array( $data );
@@ -42,12 +41,10 @@ class CampaignDtoFactoryTest extends TestCase {
 		$this->assertInstanceOf( CampaignDto::class, $dto );
 		$this->assertEquals( 123, $dto->id );
 		$this->assertEquals( 'Array Campaign', $dto->title );
-		$this->assertEquals( 'array-campaign', $dto->slug );
 		$this->assertTrue( $dto->is_enabled );
 		$this->assertTrue( $dto->is_open );
 		$this->assertTrue( $dto->has_target );
 		$this->assertEquals( 1500, $dto->target_amount );
-		$this->assertEquals( 600, $dto->collected_amount );
 	}
 
 	#[Test]
@@ -56,11 +53,9 @@ class CampaignDtoFactoryTest extends TestCase {
 		$campaign = new Campaign(
 			id: EntityId::create( 456 ),
 			title: 'Domain Campaign',
-			slug: 'domain-campaign',
 			is_enabled: false,
 			is_open: true,
 			target: new CampaignTarget( is_enabled: false, amount: 0 ),
-			collected_amount: 300
 		);
 
 		$dto = ( new CampaignDtoFactory() )->from_campaign( $campaign );
@@ -68,11 +63,9 @@ class CampaignDtoFactoryTest extends TestCase {
 		$this->assertInstanceOf( CampaignDto::class, $dto );
 		$this->assertEquals( 456, $dto->id );
 		$this->assertEquals( 'Domain Campaign', $dto->title );
-		$this->assertEquals( 'domain-campaign', $dto->slug );
 		$this->assertFalse( $dto->is_enabled );
 		$this->assertTrue( $dto->is_open );
 		$this->assertFalse( $dto->has_target );
 		$this->assertEquals( 0, $dto->target_amount );
-		$this->assertEquals( 300, $dto->collected_amount );
 	}
 }

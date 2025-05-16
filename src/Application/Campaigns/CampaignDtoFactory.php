@@ -28,12 +28,10 @@ class CampaignDtoFactory {
 	 * @param array $data Associative array with keys:
 	 *                    - id               (int|string)
 	 *                    - title            (string)
-	 *                    - slug             (string)
 	 *                    - is_enabled       (bool)
 	 *                    - is_open          (bool)
 	 *                    - has_target       (bool)
-	 *                    - target_amount    (int)
-	 *                    - collected_amount (int).
+	 *                    - target_amount    (int).
 	 *
 	 * @return CampaignDto A DTO representing the campaign data.
 	 */
@@ -42,14 +40,12 @@ class CampaignDtoFactory {
 		return fundrik()->makeWith(
 			CampaignDto::class,
 			[
-				'id'               => $data['id'],
-				'title'            => $data['title'],
-				'slug'             => $data['slug'],
-				'is_enabled'       => $data['is_enabled'],
-				'is_open'          => $data['is_open'],
-				'has_target'       => $data['has_target'],
-				'target_amount'    => $data['target_amount'],
-				'collected_amount' => $data['collected_amount'],
+				'id'            => $data['id'],
+				'title'         => $data['title'],
+				'is_enabled'    => $data['is_enabled'],
+				'is_open'       => $data['is_open'],
+				'has_target'    => $data['has_target'],
+				'target_amount' => $data['target_amount'],
 			]
 		);
 	}
@@ -68,14 +64,12 @@ class CampaignDtoFactory {
 		return fundrik()->makeWith(
 			CampaignDto::class,
 			[
-				'id'               => $campaign->id->value,
-				'title'            => $campaign->title,
-				'slug'             => $campaign->slug,
-				'is_enabled'       => $campaign->is_enabled,
-				'is_open'          => $campaign->is_open,
-				'has_target'       => $campaign->target->is_enabled,
-				'target_amount'    => $campaign->target->amount,
-				'collected_amount' => $campaign->collected_amount,
+				'id'            => $campaign->get_id(),
+				'title'         => $campaign->get_title(),
+				'is_enabled'    => $campaign->is_enabled(),
+				'is_open'       => $campaign->is_open(),
+				'has_target'    => $campaign->has_target(),
+				'target_amount' => $campaign->get_target_amount(),
 			]
 		);
 	}

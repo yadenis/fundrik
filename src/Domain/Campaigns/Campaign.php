@@ -17,8 +17,6 @@ use Fundrik\Core\Domain\EntityId;
  * It is used for managing the campaign data.
  *
  * @since 1.0.0
- *
- * @codeCoverageIgnore
  */
 final readonly class Campaign {
 
@@ -29,20 +27,87 @@ final readonly class Campaign {
 	 *
 	 * @param EntityId       $id Campaign ID (can be either int or UUID).
 	 * @param string         $title Campaign title.
-	 * @param string         $slug URL-friendly identifier for the campaign.
 	 * @param bool           $is_enabled Flag indicating if the campaign is enabled (visible and accessible).
 	 * @param bool           $is_open Flag indicating if the campaign is open.
 	 * @param CampaignTarget $target Campaign target (enabled status and amount).
-	 * @param int            $collected_amount Amount collected for the campaign.
 	 */
 	public function __construct(
-		public EntityId $id,
-		public string $title,
-		public string $slug,
-		public bool $is_enabled,
-		public bool $is_open,
-		public CampaignTarget $target,
-		public int $collected_amount
-	) {
+		private EntityId $id,
+		private string $title,
+		private bool $is_enabled,
+		private bool $is_open,
+		private CampaignTarget $target,
+	) {}
+
+	/**
+	 * Get campaign id.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return int|string Campaign id.
+	 */
+	public function get_id(): int|string {
+
+		return $this->id->value;
+	}
+
+	/**
+	 * Get campaign title.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return int|string Campaign title.
+	 */
+	public function get_title(): string {
+
+		return $this->title;
+	}
+
+	/**
+	 * Check if campaign is enabled.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool True if enabled, false otherwise.
+	 */
+	public function is_enabled(): bool {
+
+		return $this->is_enabled;
+	}
+
+	/**
+	 * Check if campaign is open.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool True if open, false otherwise.
+	 */
+	public function is_open(): bool {
+
+		return $this->is_open;
+	}
+
+	/**
+	 * Check if target is enabled.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool True if target is enabled.
+	 */
+	public function has_target(): bool {
+
+		return $this->target->is_enabled;
+	}
+
+	/**
+	 * Get target amount for campaign.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return int Target amount.
+	 */
+	public function get_target_amount(): int {
+
+		return $this->target->amount;
 	}
 }
