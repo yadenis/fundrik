@@ -4,23 +4,27 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Tests\Application\Campaigns;
 
+use Fundrik\Core\Application\Campaigns\CampaignDto;
 use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
 use Fundrik\Core\Domain\Campaigns\Campaign;
-use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use Fundrik\Core\Domain\EntityId;
+use Fundrik\Core\Infrastructure\Internal\ContainerManager;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\UsesFunction;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignDtoFactory::class )]
-#[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTarget::class )]
+#[UsesClass( EntityId::class )]
+#[UsesClass( ContainerManager::class )]
+#[UsesFunction( 'fundrik' )]
 class CampaignDtoFactoryTest extends TestCase {
 
 	#[Test]
-	public function creates_dto_from_array() {
+	public function creates_dto_from_array(): void {
 
 		$data = [
 			'id'               => 123,
@@ -47,7 +51,7 @@ class CampaignDtoFactoryTest extends TestCase {
 	}
 
 	#[Test]
-	public function creates_dto_from_campaign() {
+	public function creates_dto_from_campaign(): void {
 
 		$campaign = new Campaign(
 			id: EntityId::create( 456 ),

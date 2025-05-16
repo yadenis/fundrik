@@ -10,7 +10,6 @@ declare(strict_types=1);
 namespace Fundrik\Core\Domain\Campaigns;
 
 use Fundrik\Core\Domain\EntityId;
-use Fundrik\Core\Domain\Interfaces\Entity;
 
 /**
  * Represents a campaign.
@@ -21,7 +20,7 @@ use Fundrik\Core\Domain\Interfaces\Entity;
  *
  * @codeCoverageIgnore
  */
-final readonly class Campaign implements Entity {
+final readonly class Campaign {
 
 	/**
 	 * Campaign constructor.

@@ -9,7 +9,6 @@ declare(strict_types=1);
 
 use Fundrik\Core\Infrastructure\Internal\Container;
 use Fundrik\Core\Infrastructure\Internal\ContainerManager;
-use Fundrik\Core\Infrastructure\Platform\Interfaces\PlatformInterface;
 
 /**
  * Retrieves the Fundrik container instance.

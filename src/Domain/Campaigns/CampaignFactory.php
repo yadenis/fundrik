@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Domain\Campaigns;
 
+use Fundrik\Core\Application\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\EntityId;
 
 /**

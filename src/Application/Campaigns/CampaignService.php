@@ -9,20 +9,17 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Application\Campaigns;
 
-use Fundrik\Core\Application\Interfaces\EntityServiceInterface;
+use Fundrik\Core\Application\Campaigns\Interfaces\CampaignRepositoryInterface;
 use Fundrik\Core\Domain\Campaigns\Campaign;
-use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\CampaignFactory;
-use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
 use Fundrik\Core\Domain\EntityId;
-use Fundrik\Core\Domain\Interfaces\EntityDto;
 
 /**
  * Application service for coordinating access to campaign data and behavior.
  *
  * @since 1.0.0
  */
-final readonly class CampaignService implements EntityServiceInterface {
+final readonly class CampaignService {
 
 	/**
 	 * CampaignService constructor.
@@ -46,7 +43,7 @@ final readonly class CampaignService implements EntityServiceInterface {
 	 *
 	 * @return Campaign|null The campaign if found, or null if not found.
 	 */
-	public function get_by_id( EntityId $id ): ?Campaign {
+	public function get_campaign_by_id( EntityId $id ): ?Campaign {
 
 		$campaign_dto = $this->repository->get_by_id( $id );
 
@@ -60,7 +57,7 @@ final readonly class CampaignService implements EntityServiceInterface {
 	 *
 	 * @return Campaign[] An array of campaigns.
 	 */
-	public function get_all(): array {
+	public function get_all_campaigns(): array {
 
 		$dto_list = $this->repository->get_all();
 
@@ -75,7 +72,7 @@ final readonly class CampaignService implements EntityServiceInterface {
 	 *
 	 * @param CampaignDto $dto The campaign DTO to save.
 	 */
-	public function save( EntityDto $dto ): bool {
+	public function save_campaign( CampaignDto $dto ): bool {
 
 		$campaign = $this->factory->from_dto( $dto );
 
@@ -84,7 +81,16 @@ final readonly class CampaignService implements EntityServiceInterface {
 			: $this->repository->insert( $campaign );
 	}
 
-	public function delete( EntityId $id ): bool {
+	/**
+	 * Delete a campaign by its ID.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param EntityId $id The ID of the campaign to delete.
+	 *
+	 * @return bool True if the campaign was successfully deleted, false otherwise.
+	 */
+	public function delete_campaign( EntityId $id ): bool {
 
 		return $this->repository->delete( $id );
 	}

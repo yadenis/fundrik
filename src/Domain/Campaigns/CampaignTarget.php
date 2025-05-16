@@ -45,16 +45,4 @@ final readonly class CampaignTarget {
 			throw new InvalidArgumentException( "Target amount should be zero when targeting is disabled, given {$amount}" );
 		}
 	}
-
-	/**
-	 * Convert CampaignTarget to a string (target amount).
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string The target amount.
-	 */
-	public function __toString(): string {
-
-		return (string) $this->amount;
-	}
 }

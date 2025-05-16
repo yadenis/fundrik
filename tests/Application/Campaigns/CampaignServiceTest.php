@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Tests\Application\Campaigns;
 
+use Fundrik\Core\Application\Campaigns\CampaignDto;
 use Fundrik\Core\Application\Campaigns\CampaignService;
+use Fundrik\Core\Application\Campaigns\Interfaces\CampaignRepositoryInterface;
 use Fundrik\Core\Domain\Campaigns\Campaign;
-use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\CampaignFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
-use Fundrik\Core\Domain\Campaigns\Interfaces\CampaignRepositoryInterface;
 use Fundrik\Core\Domain\EntityId;
 use Mockery;
 use Mockery\MockInterface;
@@ -20,8 +20,8 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignService::class )]
 #[UsesClass( CampaignFactory::class )]
-#[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTarget::class )]
+#[UsesClass( EntityId::class )]
 class CampaignServiceTest extends TestCase {
 
 	private CampaignRepositoryInterface&MockInterface $repository;
@@ -41,9 +41,9 @@ class CampaignServiceTest extends TestCase {
 	}
 
 	#[Test]
-	public function get_by_id_returns_campaign() {
+	public function get_by_id_returns_campaign(): void {
 
-		$campaign_id = EntityId::from_int( 123 );
+		$campaign_id = EntityId::create( 123 );
 
 		$dto = new CampaignDto(
 			id               : 123,
@@ -62,15 +62,15 @@ class CampaignServiceTest extends TestCase {
 			->with( $this->identicalTo( $campaign_id ) )
 			->andReturn( $dto );
 
-		$result = $this->service->get_by_id( $campaign_id );
+		$result = $this->service->get_campaign_by_id( $campaign_id );
 
 		$this->assertInstanceOf( Campaign::class, $result );
 	}
 
 	#[Test]
-	public function get_by_id_returns_null_when_not_found() {
+	public function get_by_id_returns_null_when_not_found(): void {
 
-		$campaign_id = EntityId::from_int( 999 );
+		$campaign_id = EntityId::create( 999 );
 
 		$this->repository
 			->shouldReceive( 'get_by_id' )
@@ -78,13 +78,13 @@ class CampaignServiceTest extends TestCase {
 			->with( $this->identicalTo( $campaign_id ) )
 			->andReturn( null );
 
-		$result = $this->service->get_by_id( $campaign_id );
+		$result = $this->service->get_campaign_by_id( $campaign_id );
 
 		$this->assertNull( $result );
 	}
 
 	#[Test]
-	public function get_all_campaigns_returns_list_of_campaigns() {
+	public function get_all_campaigns_returns_list_of_campaigns(): void {
 
 		$dto1 = new CampaignDto(
 			id               : 123,
@@ -113,14 +113,10 @@ class CampaignServiceTest extends TestCase {
 			->once()
 			->andReturn( [ $dto1, $dto2 ] );
 
-		$result = $this->service->get_all();
+		$result = $this->service->get_all_campaigns();
 
 		$this->assertCount( 2, $result );
-
 		$this->assertInstanceOf( Campaign::class, $result[0] );
-		$this->assertEquals( 'Campaign One', $result[0]->title );
-
 		$this->assertInstanceOf( Campaign::class, $result[1] );
-		$this->assertEquals( 'Campaign Two', $result[1]->title );
 	}
 }

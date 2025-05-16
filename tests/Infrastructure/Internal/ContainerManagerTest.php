@@ -13,14 +13,16 @@ final class ContainerManagerTest extends TestCase {
 
 	protected function setUp(): void {
 
-		$reflection = new ReflectionClass( ContainerManager::class );
-		$property   = $reflection->getProperty( 'container' );
-		$property->setAccessible( true );
-		$property->setValue( null );
+		$this->reset_container();
+	}
+
+	protected function tearDown(): void {
+
+		$this->reset_container();
 	}
 
 	#[Test]
-	public function returns_container_instance() {
+	public function returns_container_instance(): void {
 
 		$container = ContainerManager::get();
 
@@ -28,7 +30,7 @@ final class ContainerManagerTest extends TestCase {
 	}
 
 	#[Test]
-	public function returns_same_container_instance_on_multiple_calls() {
+	public function returns_same_container_instance_on_multiple_calls(): void {
 
 		$first  = ContainerManager::get();
 		$second = ContainerManager::get();
@@ -37,7 +39,7 @@ final class ContainerManagerTest extends TestCase {
 	}
 
 	#[Test]
-	public function overrides_container() {
+	public function overrides_container(): void {
 
 		$container = new Container();
 
@@ -69,5 +71,13 @@ final class ContainerManagerTest extends TestCase {
 		$this->assertNotSame( $first, $fresh );
 
 		$this->assertSame( $fresh, ContainerManager::get() );
+	}
+
+	private function reset_container(): void {
+
+		$reflection = new ReflectionClass( ContainerManager::class );
+		$property   = $reflection->getProperty( 'container' );
+		$property->setAccessible( true );
+		$property->setValue( null );
 	}
 }

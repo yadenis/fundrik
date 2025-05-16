@@ -70,7 +70,7 @@ final readonly class EntityId {
 	 *
 	 * @throws InvalidArgumentException If the integer ID is not positive.
 	 */
-	public static function from_int( int $id ): self {
+	private static function from_int( int $id ): self {
 
 		if ( $id <= 0 ) {
 			throw new InvalidArgumentException( "EntityId must be a positive, given: {$id}" );
@@ -90,7 +90,7 @@ final readonly class EntityId {
 	 *
 	 * @throws InvalidArgumentException If the UUID string is invalid.
 	 */
-	public static function from_uuid( string $uuid ): self {
+	private static function from_uuid( string $uuid ): self {
 
 		try {
 			return new self( (string) Uuid::fromString( $uuid ) );
@@ -100,17 +100,5 @@ final readonly class EntityId {
 				previous: $e
 			);
 		}
-	}
-
-	/**
-	 * Convert EntityId to a string.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string The entity ID.
-	 */
-	public function __toString(): string {
-
-		return (string) $this->value;
 	}
 }

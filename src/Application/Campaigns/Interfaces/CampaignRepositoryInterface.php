@@ -9,10 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Fundrik\Core\Domain\Campaigns\Interfaces;
+namespace Fundrik\Core\Application\Campaigns\Interfaces;
 
+use Fundrik\Core\Application\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\Campaigns\Campaign;
-use Fundrik\Core\Domain\Campaigns\CampaignDto;
 use Fundrik\Core\Domain\EntityId;
 
 interface CampaignRepositoryInterface {
@@ -70,5 +70,14 @@ interface CampaignRepositoryInterface {
 	 */
 	public function update( Campaign $campaign ): bool;
 
+	/**
+	 * Delete a campaign by its ID.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param EntityId $id The ID of the campaign to delete.
+	 *
+	 * @return bool True on success, false on failure.
+	 */
 	public function delete( EntityId $id ): bool;
 }

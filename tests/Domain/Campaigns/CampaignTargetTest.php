@@ -14,15 +14,15 @@ use PHPUnit\Framework\TestCase;
 class CampaignTargetTest extends TestCase {
 
 	#[Test]
-	public function creates_when_enabled_target_with_amount() {
+	public function creates_when_enabled_target_with_amount(): void {
 
 		$target = new CampaignTarget( true, 1000 );
 
-		$this->assertEquals( '1000', (string) $target );
+		$this->assertEquals( 1000, $target->amount );
 	}
 
 	#[Test]
-	public function throws_when_target_enabled_but_zero_amount() {
+	public function throws_when_target_enabled_but_zero_amount(): void {
 
 		$this->expectException( InvalidArgumentException::class );
 
@@ -30,7 +30,7 @@ class CampaignTargetTest extends TestCase {
 	}
 
 	#[Test]
-	public function throws_when_target_enabled_but_negative_amount() {
+	public function throws_when_target_enabled_but_negative_amount(): void {
 
 		$this->expectException( InvalidArgumentException::class );
 
@@ -38,15 +38,15 @@ class CampaignTargetTest extends TestCase {
 	}
 
 	#[Test]
-	public function creates_when_disabled_target_with_zero_amount() {
+	public function creates_when_disabled_target_with_zero_amount(): void {
 
 		$target = new CampaignTarget( false, 0 );
 
-		$this->assertEquals( '0', (string) $target );
+		$this->assertEquals( 0, $target->amount );
 	}
 
 	#[Test]
-	public function throws_when_target_disabled_but_positive_amount() {
+	public function throws_when_target_disabled_but_positive_amount(): void {
 
 		$this->expectException( InvalidArgumentException::class );
 
@@ -54,7 +54,7 @@ class CampaignTargetTest extends TestCase {
 	}
 
 	#[Test]
-	public function throws_when_target_disabled_but_negative_amount() {
+	public function throws_when_target_disabled_but_negative_amount(): void {
 
 		$this->expectException( InvalidArgumentException::class );
 
