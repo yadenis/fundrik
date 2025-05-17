@@ -18,7 +18,7 @@ use Fundrik\Core\Domain\Campaigns\Campaign;
  *
  * @since 1.0.0
  */
-class CampaignDtoFactory {
+final readonly class CampaignDtoFactory {
 
 	/**
 	 * Create a CampaignDto from an associative array of data.
@@ -37,16 +37,13 @@ class CampaignDtoFactory {
 	 */
 	public function from_array( array $data ): CampaignDto {
 
-		return fundrik()->makeWith(
-			CampaignDto::class,
-			[
-				'id'            => $data['id'],
-				'title'         => $data['title'],
-				'is_enabled'    => $data['is_enabled'],
-				'is_open'       => $data['is_open'],
-				'has_target'    => $data['has_target'],
-				'target_amount' => $data['target_amount'],
-			]
+		return new CampaignDto(
+			id: $data['id'],
+			title: $data['title'],
+			is_enabled: $data['is_enabled'],
+			is_open: $data['is_open'],
+			has_target: $data['has_target'],
+			target_amount: $data['target_amount'],
 		);
 	}
 
@@ -61,16 +58,13 @@ class CampaignDtoFactory {
 	 */
 	public function from_campaign( Campaign $campaign ): CampaignDto {
 
-		return fundrik()->makeWith(
-			CampaignDto::class,
-			[
-				'id'            => $campaign->get_id(),
-				'title'         => $campaign->get_title(),
-				'is_enabled'    => $campaign->is_enabled(),
-				'is_open'       => $campaign->is_open(),
-				'has_target'    => $campaign->has_target(),
-				'target_amount' => $campaign->get_target_amount(),
-			]
+		return new CampaignDto(
+			id: $campaign->get_id(),
+			title: $campaign->get_title(),
+			is_enabled: $campaign->is_enabled(),
+			is_open: $campaign->is_open(),
+			has_target: $campaign->has_target(),
+			target_amount: $campaign->get_target_amount(),
 		);
 	}
 }

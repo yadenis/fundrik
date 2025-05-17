@@ -47,7 +47,7 @@ final readonly class CampaignService {
 
 		$campaign_dto = $this->repository->get_by_id( $id );
 
-		return $campaign_dto ? $this->factory->from_dto( $campaign_dto ) : null;
+		return $campaign_dto ? $this->factory->create( $campaign_dto ) : null;
 	}
 
 	/**
@@ -62,7 +62,7 @@ final readonly class CampaignService {
 		$dto_list = $this->repository->get_all();
 
 		return array_map(
-			fn( $dto ): Campaign => $this->factory->from_dto( $dto ),
+			fn( CampaignDto $dto ): Campaign => $this->factory->create( $dto ),
 			$dto_list
 		);
 	}
@@ -74,7 +74,7 @@ final readonly class CampaignService {
 	 */
 	public function save_campaign( CampaignDto $dto ): bool {
 
-		$campaign = $this->factory->from_dto( $dto );
+		$campaign = $this->factory->create( $dto );
 
 		return $this->repository->exists( $campaign )
 			? $this->repository->update( $campaign )

@@ -19,7 +19,7 @@ namespace Fundrik\Core\Application\Campaigns;
  *
  * @codeCoverageIgnore
  */
-class CampaignDto {
+final readonly class CampaignDto {
 
 	/**
 	 * CampaignDto constructor.
