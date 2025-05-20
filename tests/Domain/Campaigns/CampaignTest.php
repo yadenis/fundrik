@@ -6,6 +6,7 @@ namespace Fundrik\Core\Tests\Domain\Campaigns;
 
 use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Domain\Campaigns\CampaignTitle;
 use Fundrik\Core\Domain\EntityId;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -13,8 +14,9 @@ use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( Campaign::class )]
-#[UsesClass( CampaignTarget::class )]
 #[UsesClass( EntityId::class )]
+#[UsesClass( CampaignTitle::class )]
+#[UsesClass( CampaignTarget::class )]
 final class CampaignTest extends TestCase {
 
 	#[Test]
@@ -24,7 +26,7 @@ final class CampaignTest extends TestCase {
 
 		$campaign = new Campaign(
 			id: EntityId::create( $id ),
-			title:'Test Campaign',
+			title: new CampaignTitle( 'Test Campaign' ),
 			is_enabled: true,
 			is_open:  false,
 			target: new CampaignTarget( true, 1000 ),
@@ -45,7 +47,7 @@ final class CampaignTest extends TestCase {
 
 		$campaign = new Campaign(
 			id: EntityId::create( $id ),
-			title: 'Campaign Without Target',
+			title: new CampaignTitle( 'Campaign Without Target' ),
 			is_enabled: false,
 			is_open: true,
 			target: new CampaignTarget( false, 0 ),

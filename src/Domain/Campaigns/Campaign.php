@@ -26,14 +26,14 @@ final readonly class Campaign {
 	 * @since 1.0.0
 	 *
 	 * @param EntityId       $id Campaign ID (can be either int or UUID).
-	 * @param string         $title Campaign title.
+	 * @param CampaignTitle  $title Campaign title.
 	 * @param bool           $is_enabled Flag indicating if the campaign is enabled (visible and accessible).
 	 * @param bool           $is_open Flag indicating if the campaign is open.
 	 * @param CampaignTarget $target Campaign target (enabled status and amount).
 	 */
 	public function __construct(
 		private EntityId $id,
-		private string $title,
+		private CampaignTitle $title,
 		private bool $is_enabled,
 		private bool $is_open,
 		private CampaignTarget $target,
@@ -60,7 +60,7 @@ final readonly class Campaign {
 	 */
 	public function get_title(): string {
 
-		return $this->title;
+		return $this->title->value;
 	}
 
 	/**

@@ -10,6 +10,7 @@ use Fundrik\Core\Application\Campaigns\Interfaces\CampaignRepositoryInterface;
 use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Domain\Campaigns\CampaignTitle;
 use Fundrik\Core\Domain\EntityId;
 use Mockery;
 use Mockery\MockInterface;
@@ -20,9 +21,10 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignService::class )]
 #[UsesClass( Campaign::class )]
-#[UsesClass( CampaignFactory::class )]
-#[UsesClass( CampaignTarget::class )]
 #[UsesClass( EntityId::class )]
+#[UsesClass( CampaignFactory::class )]
+#[UsesClass( CampaignTitle::class )]
+#[UsesClass( CampaignTarget::class )]
 class CampaignServiceTest extends TestCase {
 
 	private CampaignRepositoryInterface&MockInterface $repository;

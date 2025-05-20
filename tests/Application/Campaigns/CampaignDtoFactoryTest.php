@@ -8,6 +8,7 @@ use Fundrik\Core\Application\Campaigns\CampaignDto;
 use Fundrik\Core\Application\Campaigns\CampaignDtoFactory;
 use Fundrik\Core\Domain\Campaigns\Campaign;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
+use Fundrik\Core\Domain\Campaigns\CampaignTitle;
 use Fundrik\Core\Domain\EntityId;
 use Fundrik\Core\Infrastructure\Internal\ContainerManager;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -18,8 +19,9 @@ use PHPUnit\Framework\TestCase;
 
 #[CoversClass( CampaignDtoFactory::class )]
 #[UsesClass( Campaign::class )]
-#[UsesClass( CampaignTarget::class )]
 #[UsesClass( EntityId::class )]
+#[UsesClass( CampaignTitle::class )]
+#[UsesClass( CampaignTarget::class )]
 #[UsesClass( ContainerManager::class )]
 #[UsesFunction( 'fundrik' )]
 class CampaignDtoFactoryTest extends TestCase {
@@ -59,7 +61,7 @@ class CampaignDtoFactoryTest extends TestCase {
 
 		$campaign = new Campaign(
 			id: EntityId::create( 456 ),
-			title: 'Domain Campaign',
+			title: new CampaignTitle( 'Domain Campaign' ),
 			is_enabled: false,
 			is_open: true,
 			target: new CampaignTarget( is_enabled: false, amount: 0 ),

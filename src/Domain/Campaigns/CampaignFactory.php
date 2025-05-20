@@ -33,11 +33,12 @@ final readonly class CampaignFactory {
 	public function create( CampaignDto $dto ): Campaign {
 
 		$id     = EntityId::create( $dto->id );
+		$title  = new CampaignTitle( $dto->title );
 		$target = new CampaignTarget( $dto->has_target, $dto->target_amount );
 
 		$campaign = new Campaign(
 			id: $id,
-			title: $dto->title,
+			title: $title,
 			is_enabled: $dto->is_enabled,
 			is_open: $dto->is_open,
 			target: $target,
