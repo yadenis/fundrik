@@ -11,6 +11,7 @@ use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use Fundrik\Core\Domain\Campaigns\CampaignTitle;
 use Fundrik\Core\Domain\EntityId;
 use Fundrik\Core\Infrastructure\Internal\ContainerManager;
+use Fundrik\Core\Support\TypeCaster;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\Attributes\UsesClass;
@@ -22,6 +23,7 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTitle::class )]
 #[UsesClass( CampaignTarget::class )]
+#[UsesClass( TypeCaster::class )]
 #[UsesClass( ContainerManager::class )]
 #[UsesFunction( 'fundrik' )]
 class CampaignDtoFactoryTest extends TestCase {
@@ -54,6 +56,28 @@ class CampaignDtoFactoryTest extends TestCase {
 		$this->assertTrue( $dto->is_open );
 		$this->assertTrue( $dto->has_target );
 		$this->assertEquals( 1500, $dto->target_amount );
+	}
+
+	#[Test]
+	public function from_array_casts_types_correctly(): void {
+
+		$data = [
+			'id'            => '789',  // string that looks like int.
+			'title'         => 9876,   // int that should be string.
+			'is_enabled'    => '1',    // string that should be cast to bool.
+			'is_open'       => 0,      // int that should be cast to bool.
+			'has_target'    => 'true', // string to bool.
+			'target_amount' => '3000', // string to int.
+		];
+
+		$dto = $this->dto_factory->from_array( $data );
+
+		$this->assertSame( 789, $dto->id );
+		$this->assertSame( '9876', $dto->title );
+		$this->assertTrue( $dto->is_enabled );
+		$this->assertFalse( $dto->is_open );
+		$this->assertTrue( $dto->has_target );
+		$this->assertSame( 3000, $dto->target_amount );
 	}
 
 	#[Test]

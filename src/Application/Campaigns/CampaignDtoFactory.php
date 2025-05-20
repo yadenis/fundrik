@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Fundrik\Core\Application\Campaigns;
 
 use Fundrik\Core\Domain\Campaigns\Campaign;
+use Fundrik\Core\Support\TypeCaster;
 
 /**
  * Factory for creating CampaignDto objects from trusted data arrays.
@@ -38,12 +39,12 @@ final readonly class CampaignDtoFactory {
 	public function from_array( array $data ): CampaignDto {
 
 		return new CampaignDto(
-			id: $data['id'],
-			title: $data['title'],
-			is_enabled: $data['is_enabled'],
-			is_open: $data['is_open'],
-			has_target: $data['has_target'],
-			target_amount: $data['target_amount'],
+			id: TypeCaster::to_id( $data['id'] ),
+			title: TypeCaster::to_string( $data['title'] ),
+			is_enabled: TypeCaster::to_bool( $data['is_enabled'] ),
+			is_open: TypeCaster::to_bool( $data['is_open'] ),
+			has_target: TypeCaster::to_bool( $data['has_target'] ),
+			target_amount: TypeCaster::to_int( $data['target_amount'] ),
 		);
 	}
 
