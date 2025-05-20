@@ -21,12 +21,19 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass( CampaignTarget::class )]
 class CampaignFactoryTest extends TestCase {
 
+	private CampaignFactory $factory;
+
+	protected function setUp(): void {
+
+		$this->factory = new CampaignFactory();
+	}
+
 	#[Test]
 	public function creates_campaign_with_int_id(): void {
 
 		$id = 1;
 
-		$campaign = ( new CampaignFactory() )->create(
+		$campaign = $this->factory->create(
 			new CampaignDto(
 				id: $id,
 				title: 'Test Campaign',
@@ -52,7 +59,7 @@ class CampaignFactoryTest extends TestCase {
 
 		$uuid = '0196934d-e117-71aa-ab63-cff172292bd2';
 
-		$campaign = ( new CampaignFactory() )->create(
+		$campaign = $this->factory->create(
 			new CampaignDto(
 				id: $uuid,
 				title: 'UUID Campaign',
@@ -73,7 +80,7 @@ class CampaignFactoryTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		( new CampaignFactory() )->create(
+		$this->factory->create(
 			new CampaignDto(
 				id: 1,
 				title: 'Invalid Campaign',
@@ -90,7 +97,7 @@ class CampaignFactoryTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		( new CampaignFactory() )->create(
+		$this->factory->create(
 			new CampaignDto(
 				id: -1,
 				title: 'Invalid Campaign',

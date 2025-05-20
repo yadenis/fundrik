@@ -181,7 +181,7 @@ class CampaignServiceTest extends TestCase {
 		$this->repository
 			->shouldReceive( 'delete' )
 			->once()
-			->with( $campaign_id )
+			->with( $this->identicalTo( $campaign_id ) )
 			->andReturn( true );
 
 		$result = $this->service->delete_campaign( $campaign_id );
@@ -197,7 +197,7 @@ class CampaignServiceTest extends TestCase {
 		$this->repository
 			->shouldReceive( 'delete' )
 			->once()
-			->with( $campaign_id )
+			->with( $this->identicalTo( $campaign_id ) )
 			->andReturn( false );
 
 		$result = $this->service->delete_campaign( $campaign_id );

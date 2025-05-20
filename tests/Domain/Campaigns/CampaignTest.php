@@ -20,21 +20,17 @@ final class CampaignTest extends TestCase {
 	#[Test]
 	public function campaign_returns_all_expected_values(): void {
 
-		$id         = EntityId::create( 42 );
-		$title      = 'Test Campaign';
-		$is_enabled = true;
-		$is_open    = false;
-		$target     = new CampaignTarget( true, 1000 );
+		$id = 42;
 
 		$campaign = new Campaign(
-			id: $id,
-			title: $title,
-			is_enabled: $is_enabled,
-			is_open: $is_open,
-			target: $target
+			id: EntityId::create( $id ),
+			title:'Test Campaign',
+			is_enabled: true,
+			is_open:  false,
+			target: new CampaignTarget( true, 1000 ),
 		);
 
-		$this->assertEquals( 42, $campaign->get_id() );
+		$this->assertEquals( $id, $campaign->get_id() );
 		$this->assertEquals( 'Test Campaign', $campaign->get_title() );
 		$this->assertTrue( $campaign->is_enabled() );
 		$this->assertFalse( $campaign->is_open() );
@@ -45,19 +41,18 @@ final class CampaignTest extends TestCase {
 	#[Test]
 	public function campaign_without_enabled_target(): void {
 
-		$id     = EntityId::create( 123 );
-		$target = new CampaignTarget( false, 0 );
+		$id = 123;
 
 		$campaign = new Campaign(
-			id: $id,
-			title: 'Hidden Target Campaign',
+			id: EntityId::create( $id ),
+			title: 'Campaign Without Target',
 			is_enabled: false,
 			is_open: true,
-			target: $target
+			target: new CampaignTarget( false, 0 ),
 		);
 
 		$this->assertFalse( $campaign->has_target() );
 		$this->assertEquals( 0, $campaign->get_target_amount() );
-		$this->assertEquals( 123, $campaign->get_id() );
+		$this->assertEquals( $id, $campaign->get_id() );
 	}
 }

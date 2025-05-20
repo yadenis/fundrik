@@ -24,6 +24,13 @@ use PHPUnit\Framework\TestCase;
 #[UsesFunction( 'fundrik' )]
 class CampaignDtoFactoryTest extends TestCase {
 
+	private CampaignDtoFactory $dto_factory;
+
+	protected function setUp(): void {
+
+		$this->dto_factory = new CampaignDtoFactory();
+	}
+
 	#[Test]
 	public function creates_dto_from_array(): void {
 
@@ -36,7 +43,7 @@ class CampaignDtoFactoryTest extends TestCase {
 			'target_amount' => 1500,
 		];
 
-		$dto = ( new CampaignDtoFactory() )->from_array( $data );
+		$dto = $this->dto_factory->from_array( $data );
 
 		$this->assertInstanceOf( CampaignDto::class, $dto );
 		$this->assertEquals( 123, $dto->id );
@@ -58,7 +65,7 @@ class CampaignDtoFactoryTest extends TestCase {
 			target: new CampaignTarget( is_enabled: false, amount: 0 ),
 		);
 
-		$dto = ( new CampaignDtoFactory() )->from_campaign( $campaign );
+		$dto = $this->dto_factory->from_campaign( $campaign );
 
 		$this->assertInstanceOf( CampaignDto::class, $dto );
 		$this->assertEquals( 456, $dto->id );

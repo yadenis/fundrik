@@ -26,12 +26,12 @@ final readonly class CampaignDtoFactory {
 	 * @since 1.0.0
 	 *
 	 * @param array $data Associative array with keys:
-	 *                    - id               (int|string)
-	 *                    - title            (string)
-	 *                    - is_enabled       (bool)
-	 *                    - is_open          (bool)
-	 *                    - has_target       (bool)
-	 *                    - target_amount    (int).
+	 *                    - id            (int|string)
+	 *                    - title         (string)
+	 *                    - is_enabled    (bool)
+	 *                    - is_open       (bool)
+	 *                    - has_target    (bool)
+	 *                    - target_amount (int).
 	 *
 	 * @return CampaignDto A DTO representing the campaign data.
 	 */
