@@ -44,7 +44,9 @@ final readonly class CampaignTitle {
 	 */
 	public static function create( string $value ): self {
 
-		if ( '' === trim( $value ) ) {
+		$value = trim( $value );
+
+		if ( '' === $value ) {
 			throw new InvalidArgumentException( 'Campaign title cannot be empty or whitespace.' );
 		}
 

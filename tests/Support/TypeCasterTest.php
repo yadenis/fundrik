@@ -62,7 +62,7 @@ class TypeCasterTest extends TestCase {
 
 		$this->assertSame( 'abc-123-def', TypeCaster::to_id( 'abc-123-def' ) );
 		$this->assertSame( 'uuid-like-id', TypeCaster::to_id( 'uuid-like-id' ) );
-		$this->assertSame( '00123', TypeCaster::to_id( '00123' ) ); // not valid int, so string preserved
+		$this->assertSame( '00123', TypeCaster::to_id( '00123' ) ); // not valid int, so string preserved.
 		$this->assertSame( 'abc123', TypeCaster::to_id( 'abc123' ) );
 	}
 }

@@ -85,10 +85,10 @@ class CampaignDtoFactoryTest extends TestCase {
 
 		$campaign = new Campaign(
 			id: EntityId::create( 456 ),
-			title: new CampaignTitle( 'Domain Campaign' ),
+			title: CampaignTitle::create( 'Domain Campaign' ),
 			is_enabled: false,
 			is_open: true,
-			target: new CampaignTarget( is_enabled: false, amount: 0 ),
+			target: CampaignTarget::create( is_enabled: false, amount: 0 ),
 		);
 
 		$dto = $this->dto_factory->from_campaign( $campaign );

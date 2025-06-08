@@ -16,7 +16,7 @@ class CampaignTargetTest extends TestCase {
 	#[Test]
 	public function creates_when_enabled_target_with_amount(): void {
 
-		$target = new CampaignTarget( true, 1000 );
+		$target = CampaignTarget::create( true, 1000 );
 
 		$this->assertEquals( 1000, $target->amount );
 	}
@@ -26,7 +26,7 @@ class CampaignTargetTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		new CampaignTarget( true, 0 );
+		CampaignTarget::create( true, 0 );
 	}
 
 	#[Test]
@@ -34,13 +34,13 @@ class CampaignTargetTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		new CampaignTarget( true, -500 );
+		CampaignTarget::create( true, -500 );
 	}
 
 	#[Test]
 	public function creates_when_disabled_target_with_zero_amount(): void {
 
-		$target = new CampaignTarget( false, 0 );
+		$target = CampaignTarget::create( false, 0 );
 
 		$this->assertEquals( 0, $target->amount );
 	}
@@ -50,7 +50,7 @@ class CampaignTargetTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		new CampaignTarget( false, 100 );
+		CampaignTarget::create( false, 100 );
 	}
 
 	#[Test]
@@ -58,6 +58,6 @@ class CampaignTargetTest extends TestCase {
 
 		$this->expectException( InvalidArgumentException::class );
 
-		new CampaignTarget( false, -500 );
+		CampaignTarget::create( false, -500 );
 	}
 }
