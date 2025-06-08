@@ -55,7 +55,7 @@ final readonly class TypeCaster {
 	 */
 	public static function to_string( mixed $value ): string {
 
-		return (string) $value;
+		return trim( (string) $value );
 	}
 
 	/**
@@ -75,6 +75,6 @@ final readonly class TypeCaster {
 			return $int_value;
 		}
 
-		return (string) $value;
+		return self::to_string( $value );
 	}
 }
