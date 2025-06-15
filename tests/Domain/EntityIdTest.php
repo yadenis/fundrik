@@ -5,12 +5,15 @@ declare(strict_types=1);
 namespace Fundrik\Core\Tests\Domain\Campaigns;
 
 use Fundrik\Core\Domain\EntityId;
+use Fundrik\Core\Support\TypeCaster;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversClass( EntityId::class )]
+#[UsesClass( TypeCaster::class )]
 class EntityIdTest extends TestCase {
 
 	#[Test]

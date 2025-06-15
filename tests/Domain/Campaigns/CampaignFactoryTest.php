@@ -10,6 +10,7 @@ use Fundrik\Core\Domain\Campaigns\CampaignFactory;
 use Fundrik\Core\Domain\Campaigns\CampaignTarget;
 use Fundrik\Core\Domain\Campaigns\CampaignTitle;
 use Fundrik\Core\Domain\EntityId;
+use Fundrik\Core\Support\TypeCaster;
 use InvalidArgumentException;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -21,6 +22,7 @@ use PHPUnit\Framework\TestCase;
 #[UsesClass( EntityId::class )]
 #[UsesClass( CampaignTitle::class )]
 #[UsesClass( CampaignTarget::class )]
+#[UsesClass( TypeCaster::class )]
 class CampaignFactoryTest extends TestCase {
 
 	private CampaignFactory $factory;

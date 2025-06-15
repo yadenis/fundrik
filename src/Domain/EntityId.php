@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace Fundrik\Core\Domain;
 
+use Fundrik\Core\Support\TypeCaster;
 use InvalidArgumentException;
 use Ramsey\Uuid\Exception\InvalidUuidStringException;
 use Ramsey\Uuid\Uuid;
@@ -93,7 +94,7 @@ final readonly class EntityId {
 	private static function from_uuid( string $uuid ): self {
 
 		try {
-			return new self( (string) Uuid::fromString( $uuid ) );
+			return new self( TypeCaster::to_string( Uuid::fromString( $uuid ) ) );
 		} catch ( InvalidUuidStringException $e ) {
 			throw new InvalidArgumentException(
 				message: "EntityId must be a valid UUID, given: {$uuid}",
